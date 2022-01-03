@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Credentials from "./Credentials";
+import Credentials from "./utils/Credentials";
 import axios from "axios";
 
 const App = () => {
