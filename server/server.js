@@ -1,40 +1,38 @@
 const express = require("express");
 const cors = require("cors");
 const SpotifyWebApi = require("spotify-web-api-node");
-const app = express();
-app.use(express.json());
-app.use(cors());
+const server = express();
+server.use(express.json());
+server.use(cors());
 
-app.post("/refresh", (req, res) => {
+server.post("/refresh", (req, res, next) => {
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWebApi({
     redirectUri: "http://localhost:3000",
-    clientId: process.env.CLIENT_ID || "a4d359510d674b32af2ac4ff821e067d",
-    clientSecret: process.env.CLIENT_SECRET || "",
+    clientId: process.env.CLIENT_ID || "Spotistats client_Id here",
+    clientSecret: process.env.CLIENT_SECRET || "shh it's secret",
     refreshToken,
   });
-
   spotifyApi
     .refreshAccessToken()
     .then((data) => {
+      console.log("Refresh!", data.body.access_token);
       res.json({
-        accessToken: data.body.accessToken,
-        expiresIn: data.body.expiresIn,
+        accessToken: data.body.access_token,
+        expiresIn: data.body.expires_in,
       });
     })
     .catch((err) => {
-      console.log(err);
-      res.sendStatus(400);
+      next(err);
     });
 });
 
-app.post("/login", (req, res) => {
+server.post("/login", (req, res, next) => {
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
     redirectUri: "http://localhost:3000",
-    clientId: process.env.CLIENT_ID || "a4d359510d674b32af2ac4ff821e067d",
-    clientSecret:
-      process.env.CLIENT_SECRET || "21fa2d7d75e6476baeea0e891c0fec2c",
+    clientId: process.env.CLIENT_ID || "Spotistats client_Id here",
+    clientSecret: process.env.CLIENT_SECRET || "shh it's secret",
   });
   spotifyApi
     .authorizationCodeGrant(code)
@@ -46,9 +44,15 @@ app.post("/login", (req, res) => {
       });
     })
     .catch((err) => {
-      console.log(err);
-      res.sendStatus(400);
+      next(err);
     });
 });
 
-app.listen(3001);
+server.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    message: err.message,
+    stack: err.stack,
+  });
+});
+
+module.exports = server;
