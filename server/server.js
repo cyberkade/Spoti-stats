@@ -38,9 +38,9 @@ server.post("/login", (req, res, next) => {
     .authorizationCodeGrant(code)
     .then((data) => {
       res.json({
-        accessToken: data.body.access_token,
-        refreshToken: data.body.refresh_token,
-        expiresIn: data.body.expires_in,
+        access_token: data.body.access_token,
+        refresh_token: data.body.refresh_token,
+        expires_in: data.body.expires_in,
       });
     })
     .catch((err) => {
