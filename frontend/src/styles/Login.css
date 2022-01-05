@@ -1,0 +1,21 @@
+* {
+  background-color: #121212;
+  color: #f7f7f7;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: 8rem;
+}
+
+p {
+  font-size: 1.5rem;
+}

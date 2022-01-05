@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import useAuth from "../Hooks/useAuth";
 import AxiosWithAuth from "../Utils/axiosWithAuth";
 import Dashboard from "../Components/Dashboard.js";
+import Loading from "../Common/Loading.js";
+
 const Landing = ({ code }) => {
   const accessToken = useAuth(code);
   const [userInfo, setUserInfo] = useState(null);
@@ -14,7 +16,7 @@ const Landing = ({ code }) => {
   }, []);
   console.log(accessToken);
   console.log(userInfo);
-  return userInfo ? <Dashboard userInfo={userInfo} /> : <div>Loading!</div>;
+  return userInfo ? <Dashboard userInfo={userInfo} /> : <Loading />;
 };
 
 export default Landing;
