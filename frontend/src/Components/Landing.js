@@ -4,17 +4,18 @@ import AxiosWithAuth from "../Utils/axiosWithAuth";
 import Dashboard from "../Components/Dashboard.js";
 import Loading from "../Common/Loading.js";
 
-const Landing = ({ code }) => {
-  const accessToken = useAuth(code);
+const Landing = () => {
   const [userInfo, setUserInfo] = useState(null);
   useEffect(() => {
     AxiosWithAuth()
       .get("/users/kaderade18")
       .then((res) => {
         setUserInfo(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
-  console.log(accessToken);
   console.log(userInfo);
   return userInfo ? <Dashboard userInfo={userInfo} /> : <Loading />;
 };
