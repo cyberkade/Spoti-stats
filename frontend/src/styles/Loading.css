@@ -4,16 +4,45 @@ body {
   background: #151515;
 }
 
+button.stuck {
+  width: 10em;
+  height: 4em;
+  background: none;
+  color: #ffa260;
+  border: 2px solid;
+  padding: 1em 2em;
+  font-size: 1em;
+  transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+button.stuck:hover {
+  color: #fff;
+  border-color: #f1ff5c;
+  box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+  transform: translateY(-0.25em);
+  cursor: pointer;
+}
+button.stuck:active {
+  color: #f1ff5c;
+}
+
 .ball-container {
-  width: 200px;
-  height: 100px;
-  padding-top: 100px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ball-wrapper {
+  width: 40vw;
+  height: 40vh;
   margin: 0 auto;
 }
 
 .ball {
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   margin: 10px auto;
   border-radius: 50px;
 }
