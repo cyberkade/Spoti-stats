@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { UserContext } from "./Contexts/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "antd/dist/antd.css";
 import Login from "./Components/Login";
 import Landing from "./Components/Landing";
 import Callback from "./Callback";

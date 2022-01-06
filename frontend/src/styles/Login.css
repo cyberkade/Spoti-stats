@@ -1,6 +1,7 @@
 * {
-  background-color: #121212;
+  background-color: #151515;
   color: #f7f7f7;
+  font-family: "Work Sans", sans-serif;
 }
 
 .container {
@@ -14,6 +15,7 @@
 
 .title {
   font-size: 8rem;
+  color: #f7f7f7;
 }
 
 p {
