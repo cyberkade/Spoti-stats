@@ -8,7 +8,7 @@ server.use(cors());
 server.post("/refresh", (req, res, next) => {
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWebApi({
-    redirectUri: "http://localhost:3000",
+    redirectUri: "http://localhost:3000/callback",
     clientId: process.env.CLIENT_ID || "Spotistats client_Id here",
     clientSecret: process.env.CLIENT_SECRET || "shh it's secret",
     refreshToken,
@@ -30,7 +30,7 @@ server.post("/refresh", (req, res, next) => {
 server.post("/login", (req, res, next) => {
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
-    redirectUri: "http://localhost:3000",
+    redirectUri: "http://localhost:3000/callback",
     clientId: process.env.CLIENT_ID || "Spotistats client_Id here",
     clientSecret: process.env.CLIENT_SECRET || "shh it's secret",
   });

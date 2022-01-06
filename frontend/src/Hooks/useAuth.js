@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useAuth = (code) => {
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
-
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .post("http://localhost:3001/login", {
@@ -16,10 +17,11 @@ const useAuth = (code) => {
         setAccessToken(res.data.access_token);
         setRefreshToken(res.data.refresh_token);
         setExpiresIn(res.data.expires_in);
-        window.history.pushState({}, null, "/");
+        navigate("/dashboard");
       })
-      .catch(() => {
-        window.location = "/";
+      .catch((err) => {
+        navigate("/");
+        console.log(err);
       });
   }, [code]);
 
@@ -35,8 +37,9 @@ const useAuth = (code) => {
           setAccessToken(res.data.access_token);
           setExpiresIn(res.data.expires_in);
         })
-        .catch(() => {
-          window.location = "/";
+        .catch((err) => {
+          navigate("/");
+          console.log(err);
         });
     }, (expiresIn - 60) * 1000);
 
