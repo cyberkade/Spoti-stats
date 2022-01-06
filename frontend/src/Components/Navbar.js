@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../Contexts/UserContext";
 import { Layout, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import "antd/dist/antd.css";
 import "../Styles/Navbar.css";
 
 const { Header } = Layout;

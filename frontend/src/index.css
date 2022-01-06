@@ -136,11 +136,11 @@ table {
 /* ^^CSS RESET^^ */
 
 * {
-  background-color: #121212;
+  background-color: #151515;
   color: #f7f7f7;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
