@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <div className=" container" style={{ margin: "0px 10px" }}>
       <h1 className="title">Spoti-Stats</h1>
-      <p>Track your stats, create new playlists, and more!</p>
+      <p className="text">Track your stats, create new playlists, and more!</p>
       <a className="btn btn-success btn-lg" href={AUTH_URL}>
         Login With Spotify!
       </a>

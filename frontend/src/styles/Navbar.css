@@ -2,6 +2,11 @@ body {
   background-color: #151515;
 }
 
+.logo {
+  background-color: #1f1e1e;
+  font-size: 2em;
+}
+
 .logoDiv {
   display: flex;
   justify-content: space-between;

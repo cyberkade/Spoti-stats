@@ -4,23 +4,25 @@ import { Layout, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import "../Styles/Navbar.css";
+import logo from "../images/s.png";
 
 const { Header } = Layout;
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
   return (
     <>
       <Layout className="layout">
         <Header className="header">
           <div className="logoDiv">
-            <div>
+            <div className="logo">
+              Spotistats
               {/* <img
                 src={logo}
-                alt="underdog devs logo"
-                height="68"
-                style={{ marginLeft: "1vw" }}
+                alt="spotistats logo"
+                height="59"
+                className="logo"
+                // style={{ marginLeft: "1vw" }}
               /> */}
             </div>
             <div className="userInfo-and-profilePic">
