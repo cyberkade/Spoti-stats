@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/Loading.css";
 const Loading = () => {
-  const [stuck, setStuck] = useState(false);
-  setTimeout(() => {
-    setStuck(true);
-  }, 5000);
   function refreshPage() {
     window.location.reload(false);
   }
@@ -19,11 +15,9 @@ const Loading = () => {
         <div className="ball"></div>
         <div className="ball"></div>
       </div>
-      {stuck && (
-        <button onClick={refreshPage} class="stuck">
-          Impatient?
-        </button>
-      )}
+      <button onClick={refreshPage} className="stuck">
+        Impatient?
+      </button>
     </div>
   );
 };

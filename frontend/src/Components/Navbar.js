@@ -9,7 +9,6 @@ const { Header } = Layout;
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
   return (
     <>
       <Layout className="layout">
