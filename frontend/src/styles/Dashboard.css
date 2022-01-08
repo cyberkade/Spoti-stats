@@ -3,3 +3,16 @@ body {
   font-family: "DotGothic16", sans-serif;
   font-family: "Work Sans", sans-serif;
 }
+
+section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.artistImg {
+}
+
+.trackImg {
+}
