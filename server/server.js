@@ -5,6 +5,27 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 
+server.post("/login", (req, res, next) => {
+  const code = req.body.code;
+  const spotifyApi = new SpotifyWebApi({
+    redirectUri: "http://localhost:3000/callback",
+    clientId: process.env.CLIENT_ID || "Spotify client_Id here",
+    clientSecret: process.env.CLIENT_SECRET || "shh it's secret",
+  });
+  spotifyApi
+    .authorizationCodeGrant(code)
+    .then((data) => {
+      res.json({
+        access_token: data.body.access_token,
+        refresh_token: data.body.refresh_token,
+        expires_in: data.body.expires_in,
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 server.post("/refresh", (req, res, next) => {
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWebApi({
@@ -20,27 +41,6 @@ server.post("/refresh", (req, res, next) => {
       res.json({
         accessToken: data.body.access_token,
         expiresIn: data.body.expires_in,
-      });
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
-
-server.post("/login", (req, res, next) => {
-  const code = req.body.code;
-  const spotifyApi = new SpotifyWebApi({
-    redirectUri: "http://localhost:3000/callback",
-    clientId: process.env.CLIENT_ID || "Spotistats client_Id here",
-    clientSecret: process.env.CLIENT_SECRET || "shh it's secret",
-  });
-  spotifyApi
-    .authorizationCodeGrant(code)
-    .then((data) => {
-      res.json({
-        access_token: data.body.access_token,
-        refresh_token: data.body.refresh_token,
-        expires_in: data.body.expires_in,
       });
     })
     .catch((err) => {

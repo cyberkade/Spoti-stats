@@ -1,20 +1,18 @@
 import React, { useContext } from "react";
 import { TopArtistsContext } from "../Contexts/TopArtistsContext";
+import Artist from "./Artist";
 import "../Styles/Artists.css";
 function Artists() {
-  const { topArtists } = useContext(TopArtistsContext);
+  const { topArtists, setTopArtists } = useContext(TopArtistsContext);
   console.log(topArtists);
+  console.log(setTopArtists);
 
   return (
-    <div>
-      {topArtists.map((artist, index) => (
-        <img
-          src={artist.images[1].url}
-          className="artistImg"
-          key={index}
-          alt="top 50 artist"
-        />
-      ))}
+    <div className="artists-container">
+      {topArtists &&
+        topArtists.map((artist, index) => (
+          <Artist key={index} artist={artist} />
+        ))}
     </div>
   );
 }

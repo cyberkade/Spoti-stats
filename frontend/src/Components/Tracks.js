@@ -1,10 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
+import Track from "./Track";
+import axiosWithAuth from "../Utils/axiosWithAuth";
+
 import "../Styles/Tracks.css";
 function Tracks() {
-  const { topTracks } = useContext(TopTracksContext);
-  console.log(topTracks);
-  return <div></div>;
+  const { topTracks, setTopTracks } = useContext(TopTracksContext);
+  useEffect(() => {
+    axiosWithAuth()
+      .get("/me/top/tracks?limit=50&offset=0&time_range=long_term")
+      .then((res) => {
+        setTopTracks(res.data.items);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  if (topTracks) {
+    console.log(topTracks);
+  }
+  return (
+    <div className="tracks-container">
+      {topTracks &&
+        topTracks.map((track, index) => (
+          <Track key={index} track={{ ...track, top: index + 1 }} />
+        ))}
+    </div>
+  );
 }
 
 export default Tracks;
