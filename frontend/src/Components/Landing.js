@@ -26,6 +26,7 @@ const Landing = () => {
     axiosWithAuth()
       .get("/me/top/artists?limit=50&offset=0&time_range=long_term")
       .then((res) => {
+        console.log(res.data.items);
         setTopArtists(res.data.items);
       })
       .catch((err) => {

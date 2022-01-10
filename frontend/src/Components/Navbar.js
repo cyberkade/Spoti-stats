@@ -25,6 +25,9 @@ const Navbar = () => {
                 // style={{ marginLeft: "1vw" }}
               /> */}
             </div>
+            <div>
+              <a>Music Player</a>
+            </div>
             <div className="userInfo-and-profilePic">
               <div className="userInfo">
                 <div className="username"> {user.display_name} </div>
