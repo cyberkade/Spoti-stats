@@ -15,9 +15,6 @@ const Loading = () => {
         <div className="ball"></div>
         <div className="ball"></div>
       </div>
-      <button onClick={refreshPage} className="stuck">
-        Impatient?
-      </button>
     </div>
   );
 };
