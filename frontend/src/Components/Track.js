@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { TopTracksContext } from "../Contexts/TopTracksContext";
+import React from "react";
 import "../Styles/Tracks.css";
 
 function Track({ track }) {

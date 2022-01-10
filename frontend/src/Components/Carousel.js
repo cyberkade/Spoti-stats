@@ -1,31 +1,59 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Artist from "./Artist";
+import Track from "./Track";
 import "../Styles/Carousel.css";
+
 function Carousel({ top5 }) {
-  const [current, setCurrent] = useState(0);
-  const handleClick = () => {};
-  console.log(top5[0].album || "");
-  console.log(top5[0].images || "**");
+  const navigate = useNavigate();
+  const [currentTrack, setCurrentTrack] = useState(0);
+  const [currentArtist, setCurrentArtist] = useState(0);
+
+  const handleArtist = () => {
+    if (currentArtist === 4) {
+      setCurrentArtist(0);
+    } else setCurrentArtist(currentArtist + 1);
+  };
+  const handleTrack = () => {
+    if (currentTrack === 4) {
+      setCurrentTrack(0);
+    } else setCurrentTrack(currentTrack + 1);
+  };
+  console.log(top5[currentTrack]);
+  // setInterval(() => {
+  //   handleArtist();
+  //   handleTrack();
+  // }, 5000);
   return (
-    <>
+    <div className="carousel-container">
       {top5[0].album && (
-        <div className="carousel-container">
-          <img
-            src={top5[0].album.images[1].url}
-            className="carousel-image"
-            alt={top5.name}
-          />
-        </div>
+        <>
+          <Track track={top5[currentTrack]} />
+          <button
+            className="stuck"
+            onClick={() => {
+              navigate("/tracks");
+            }}
+          >
+            View Tracks
+          </button>
+        </>
       )}
+
       {top5[0].images && (
-        <div className="carousel-container">
-          <div
-            style={{ backgroundImage: `url(${top5[0].images[1].url})` }}
-            className="carousel-image"
-            alt={top5.name}
-          ></div>
-        </div>
+        <>
+          <Artist artist={top5[currentArtist]} />
+          <button
+            className="stuck"
+            onClick={() => {
+              navigate("/artists");
+            }}
+          >
+            View Artists
+          </button>
+        </>
       )}
-    </>
+    </div>
   );
 }
 
