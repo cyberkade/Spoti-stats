@@ -2,12 +2,15 @@ import React, { useContext } from "react";
 import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 
-import Navbar from "./Navbar";
 import "../Styles/Dashboard.css";
 import Artists from "./Artists";
 import Tracks from "./Tracks";
 import Carousel from "./Carousel";
+
+import { useNavigate } from "react-router-dom";
+
 const Dashboard = () => {
+  const navigate = useNavigate();
   const { topArtists } = useContext(TopArtistsContext);
   const { topTracks } = useContext(TopTracksContext);
   let top5Artists = [];
@@ -23,8 +26,6 @@ const Dashboard = () => {
   console.log(top5Tracks);
   return (
     <>
-      <Navbar />
-
       <section>
         {top5Artists.length > 0 && <Carousel top5={top5Artists} />}
         {/* {top5Artists.map((artist, index) => (
@@ -46,6 +47,22 @@ const Dashboard = () => {
         />
       ))} */}
       </section>
+      <button
+        onClick={() => {
+          navigate("/artists");
+        }}
+      >
+        {" "}
+        View Artists
+      </button>
+      <button
+        onClick={() => {
+          navigate("/tracks");
+        }}
+      >
+        {" "}
+        View Tracks
+      </button>
     </>
   );
 };
