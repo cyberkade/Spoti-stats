@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
+import axiosWithAuth from "../Utils/axiosWithAuth";
+
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 import Track from "./Track";
-import axiosWithAuth from "../Utils/axiosWithAuth";
 
 import "../Styles/Tracks.css";
 function Tracks() {
@@ -16,9 +17,6 @@ function Tracks() {
         console.log(err);
       });
   }, []);
-  if (topTracks) {
-    console.log(topTracks);
-  }
   return (
     <div className="tracks-container">
       {topTracks &&
