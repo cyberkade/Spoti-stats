@@ -4,6 +4,14 @@ button.view.carousel {
   border-radius: 50%;
 }
 
+.left {
+  margin-right: 50px;
+}
+
+.right {
+  margin-left: 50px;
+}
+
 button.view {
   width: 10em;
   height: 4em;
@@ -27,12 +35,15 @@ button.view:active {
 
 .carousel-container {
   width: 40vw;
-  height: 90vh;
-  margin: 0vw 5vw;
+  height: 87vh;
+  margin: 1vw 5vw;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-shadow: 1px 0px 10px gray;
 }
 .carousel-image {
   width: 300px;
@@ -47,5 +58,5 @@ button.view:active {
 .slide.active {
   opacity: 1;
   transition-duration: 1s ease;
-  transform: scale(1);
+  transform: scale(1.09);
 }
