@@ -5,7 +5,7 @@ import { TopTracksContext } from "../Contexts/TopTracksContext";
 import Track from "./Track";
 
 import "../Styles/Tracks.css";
-function Tracks() {
+const Tracks = () => {
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
   useEffect(() => {
     axiosWithAuth()
@@ -25,6 +25,6 @@ function Tracks() {
         ))}
     </div>
   );
-}
+};
 
 export default Tracks;

@@ -20,9 +20,6 @@ function Carousel({ top5 }) {
   // setInterval(() => {
   //   next();
   // }, 5000);
-  // setInterval(() => {
-  //   setCurrent(0);
-  // }, 24000);
   return (
     <div className="carousel-container">
       {top5.map((element, index) => {

@@ -8,6 +8,7 @@ import Carousel from "./Carousel";
 const Dashboard = () => {
   const { topArtists } = useContext(TopArtistsContext);
   const { topTracks } = useContext(TopTracksContext);
+
   return (
     <>
       <section>

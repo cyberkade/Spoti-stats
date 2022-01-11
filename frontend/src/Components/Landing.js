@@ -7,20 +7,20 @@ import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 
 const Landing = () => {
-  const { user, setUser } = useContext(UserContext);
+  // const { user, setUser } = useContext(UserContext);
   const { topArtists, setTopArtists } = useContext(TopArtistsContext);
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
 
   const accessToken = localStorage.getItem("access_token");
   useEffect(() => {
-    axiosWithAuth()
-      .get("/me")
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axiosWithAuth()
+    //   .get("/me")
+    //   .then((res) => {
+    //     setUser(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
     axiosWithAuth()
       .get("/me/top/artists?limit=5&offset=0&time_range=long_term")
       .then((res) => {
@@ -39,7 +39,7 @@ const Landing = () => {
       });
   }, []);
 
-  return user && topTracks && topArtists ? <Dashboard /> : <Loading />;
+  return topTracks && topArtists ? <Dashboard /> : <Loading />;
 };
 
 export default Landing;

@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 
 const { Header } = Layout;
 
-const Navbar = () => {
-  const { user } = useContext(UserContext);
+const Navbar = ({ user }) => {
+  // const { user } = useContext(UserContext);
+  console.log(user);
   return (
     <>
       <Layout className="layout">
