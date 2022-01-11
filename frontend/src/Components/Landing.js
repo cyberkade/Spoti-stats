@@ -24,7 +24,6 @@ const Landing = () => {
     axiosWithAuth()
       .get("/me/top/artists?limit=5&offset=0&time_range=long_term")
       .then((res) => {
-        console.log(res.data.items);
         setTopArtists(res.data.items);
       })
       .catch((err) => {
@@ -33,7 +32,6 @@ const Landing = () => {
     axiosWithAuth()
       .get("/me/top/tracks?limit=5&offset=0&time_range=long_term")
       .then((res) => {
-        console.log(res.data.items);
         setTopTracks(res.data.items);
       })
       .catch((err) => {

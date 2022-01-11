@@ -13,6 +13,7 @@ import Loading from "./Common/Loading";
 import Artists from "./Components/Artists";
 import Tracks from "./Components/Tracks";
 import Navbar from "./Components/Navbar";
+import PlayerPage from "./Components/PlayerPage";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/dashboard" element={<Landing />} />
               <Route path="/artists" element={<Artists />} />
               <Route path="/tracks" element={<Tracks />} />
+              <Route path="/player" element={<PlayerPage />} />
             </Route>
           </Routes>
         </TopTracksContext.Provider>

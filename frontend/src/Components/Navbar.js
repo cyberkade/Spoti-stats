@@ -4,7 +4,7 @@ import { Layout, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import "../Styles/Navbar.css";
-import logo from "../images/s.png";
+import { Link } from "react-router-dom";
 
 const { Header } = Layout;
 
@@ -15,15 +15,9 @@ const Navbar = () => {
       <Layout className="layout">
         <Header className="header">
           <div className="logoDiv">
-            <div className="logo">
-              Spotistats
-              {/* <img
-                src={logo}
-                alt="spotistats logo"
-                height="59"
-                className="logo"
-                // style={{ marginLeft: "1vw" }}
-              /> */}
+            <div className="logo">Spotistats</div>
+            <div>
+              <Link to="/player">Music Player</Link>
             </div>
             <div className="userInfo-and-profilePic">
               <div className="userInfo">

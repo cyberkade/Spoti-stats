@@ -17,9 +17,6 @@ function Artists() {
         console.log(err);
       });
   }, []);
-  console.log(topArtists);
-  console.log(setTopArtists);
-
   return (
     <div className="artists-container">
       {topArtists &&

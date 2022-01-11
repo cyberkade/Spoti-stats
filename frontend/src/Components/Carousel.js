@@ -6,52 +6,67 @@ import "../Styles/Carousel.css";
 
 function Carousel({ top5 }) {
   const navigate = useNavigate();
-  const [currentTrack, setCurrentTrack] = useState(0);
-  const [currentArtist, setCurrentArtist] = useState(0);
+  const [current, setCurrent] = useState(0);
+  const length = top5.length;
 
-  const handleArtist = () => {
-    if (currentArtist === 4) {
-      setCurrentArtist(0);
-    } else setCurrentArtist(currentArtist + 1);
+  const next = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
   };
-  const handleTrack = () => {
-    if (currentTrack === 4) {
-      setCurrentTrack(0);
-    } else setCurrentTrack(currentTrack + 1);
+
+  const prev = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
   };
-  console.log(top5[currentTrack]);
+  console.log(top5[current]);
   // setInterval(() => {
-  //   handleArtist();
-  //   handleTrack();
+  //   next();
   // }, 5000);
+  // setInterval(() => {
+  //   setCurrent(0);
+  // }, 24000);
   return (
     <div className="carousel-container">
-      {top5[0].album && (
-        <>
-          <Track track={top5[currentTrack]} />
-          <button
-            className="stuck"
-            onClick={() => {
-              navigate("/tracks");
-            }}
+      {top5.map((element, index) => {
+        return (
+          <div
+            className={index === current ? "slide active" : "slide"}
+            key={index}
           >
-            View Tracks
-          </button>
-        </>
-      )}
+            {index === current && top5[0].album ? (
+              <Track track={element} />
+            ) : (
+              index === current && <Artist artist={element} />
+            )}
+          </div>
+        );
+      })}
 
-      {top5[0].images && (
-        <>
-          <Artist artist={top5[currentArtist]} />
-          <button
-            className="stuck"
-            onClick={() => {
-              navigate("/artists");
-            }}
-          >
-            View Artists
-          </button>
-        </>
+      <div className="btn-cont">
+        <button className="view carousel left" onClick={prev}>
+          &lt;
+        </button>
+        <button className="view carousel right" onClick={next}>
+          &gt;
+        </button>
+      </div>
+
+      {top5[0].album ? (
+        <button
+          className="view"
+          onClick={() => {
+            navigate("/tracks");
+          }}
+        >
+          View Tracks
+        </button>
+      ) : (
+        <button
+          className="view"
+          onClick={() => {
+            navigate("/artists");
+          }}
+        >
+          View Artists
+        </button>
       )}
     </div>
   );
