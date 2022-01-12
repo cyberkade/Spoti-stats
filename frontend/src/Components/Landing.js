@@ -7,7 +7,7 @@ import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 
 const Landing = () => {
-  // const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const { topArtists, setTopArtists } = useContext(TopArtistsContext);
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
 
