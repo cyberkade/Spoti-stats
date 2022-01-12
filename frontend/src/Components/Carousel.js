@@ -29,9 +29,11 @@ function Carousel({ top5 }) {
             key={index}
           >
             {index === current && top5[0].album ? (
-              <Track track={element} />
+              <Track track={{ ...element, top: index + 1 }} />
             ) : (
-              index === current && <Artist artist={element} />
+              index === current && (
+                <Artist artist={{ ...element, top: index + 1 }} />
+              )
             )}
           </div>
         );

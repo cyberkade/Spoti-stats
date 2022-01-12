@@ -53,10 +53,10 @@ button.view:active {
 .slide {
   opacity: 0;
   transition-duration: 1s ease;
+  transform: scale(1.1);
 }
 
 .slide.active {
   opacity: 1;
-  transition-duration: 1s ease;
-  transform: scale(1.09);
+  transition-duration: 1s ease-in-out;
 }
