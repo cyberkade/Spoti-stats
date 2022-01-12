@@ -11,7 +11,7 @@ const Dashboard = () => {
   return (
     <>
       <section>
-        {topArtists.length > 0 && <Carousel top5={topArtists} />}
+        <Carousel top5={topArtists} />
         {/* {top5Artists.map((artist, index) => (
          <img
           src={artist.images[1].url}
@@ -20,7 +20,7 @@ const Dashboard = () => {
           alt="top 5 listened to artist"
         />
       ))}  */}
-        {topTracks.length > 0 && <Carousel top5={topTracks} />}
+        <Carousel top5={topTracks} />
         {/* 
       {top5Tracks.map((track, index) => (
         <img
