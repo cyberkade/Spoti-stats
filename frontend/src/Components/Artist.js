@@ -9,7 +9,9 @@ function Artist({ artist }) {
     <div>
       {artist && (
         <div
-          style={{ backgroundImage: `url(${artist.images[1].url})` }}
+          style={{
+            background: ` center / cover no-repeat url(${artist.images[1].url})`,
+          }}
           className="artistImg"
           alt="top 50 artist"
         >

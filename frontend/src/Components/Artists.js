@@ -10,8 +10,17 @@ function Artists() {
   useEffect(() => {
     axiosWithAuth()
       .get("/me/top/artists?limit=50&offset=0&time_range=long_term")
-      .then((res) => {
-        setTopArtists(res.data.items);
+      .then((res1) => {
+        const top50 = res1.data.items;
+        axiosWithAuth()
+          .get("/me/top/artists?limit=50&offset=49&time_range=long_term")
+          .then((res) => {
+            res.data.items.shift();
+            setTopArtists([...top50, ...res.data.items]);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);

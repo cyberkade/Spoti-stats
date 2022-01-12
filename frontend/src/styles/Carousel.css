@@ -1,7 +1,62 @@
-button.view.carousel {
+.btn-cont {
+  background: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+button.view {
+  align-self: flex-end;
+  height: auto;
+  width: 100%;
+  border: none;
+  border-top: 1px solid gray;
+  font-size: 1.2em;
+}
+
+button.scroll {
   width: 5em;
   height: 4em;
   border-radius: 50%;
+  background: none;
+  color: #ffa260;
+  border: 2px solid;
+  padding: 1em 2em;
+  font-size: 1em;
+  transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+button.scroll:hover {
+  color: #fff;
+  border-color: #f1ff5c;
+  box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
+  transform: translateY(-0.25em);
+  cursor: pointer;
+}
+
+button.scroll:active {
+  color: #f1ff5c;
+}
+
+.carousel-container {
+  width: 40vw;
+  height: 87vh;
+  margin: 1vw 5vw;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 5px;
+  box-shadow: 1px 0px 10px gray;
+}
+
+.carousel-image {
+  width: 300px;
+  height: 300px;
+}
+
+.empty {
+  height: 30%;
 }
 
 .left {
@@ -12,51 +67,33 @@ button.view.carousel {
   margin-left: 50px;
 }
 
-button.view {
-  width: 10em;
-  height: 4em;
-  background: none;
-  color: #ffa260;
-  border: 2px solid;
-  padding: 1em 2em;
-  font-size: 1em;
-  transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-}
-button.view:hover {
-  color: #fff;
-  border-color: #f1ff5c;
-  box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
-  transform: translateY(-0.25em);
-  cursor: pointer;
-}
-button.view:active {
-  color: #f1ff5c;
-}
-
-.carousel-container {
-  width: 40vw;
-  height: 87vh;
-  margin: 1vw 5vw;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid gray;
-  border-radius: 5px;
-  box-shadow: 1px 0px 10px gray;
-}
-.carousel-image {
-  width: 300px;
-  height: 300px;
-}
-
 .slide {
   opacity: 0;
-  transition-duration: 1s ease;
+  transition-duration: 1s ease-in-out;
+  transform: scale(1.1);
 }
 
 .slide.active {
   opacity: 1;
-  transition-duration: 1s ease;
-  transform: scale(1.09);
+  transition-duration: 1s ease-in-out;
+  animation: rotateY 300ms ease-in-out forwards;
+  transform-origin: center;
 }
+
+@keyframes rotateY {
+  0% {
+    transform: rotateY(90deg);
+  }
+  80% {
+    transform: rotateY(-10deg);
+  }
+  100% {
+    transform: rotateY(0);
+  }
+}
+
+/* @media screen and (min-width: 1440px) {
+  .slide {
+    transform: scale(2.5);
+  }
+} */

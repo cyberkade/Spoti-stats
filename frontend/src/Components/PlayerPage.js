@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./TrackSearchResult";
+
+import { TopTracksContext } from "../Contexts/TopTracksContext";
+
 import Player from "./Player";
 const spotifyApi = new SpotifyWebApi({
   client_id: "a4d359510d674b32af2ac4ff821e067d",
 });
 
 function PlayerPage() {
+  const { topTracks, setTopTracks } = useContext(TopTracksContext);
   const accessToken = localStorage.getItem("access_token");
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -18,6 +22,11 @@ function PlayerPage() {
     setSearch("");
     // setLyrics("")
   };
+
+  useEffect(() => {
+    setTopTracks(topTracks);
+  }, []);
+  console.log(topTracks);
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);

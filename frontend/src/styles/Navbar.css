@@ -5,6 +5,7 @@ body {
 .logo {
   background-color: #1f1e1e;
   font-size: 2em;
+  cursor: pointer;
 }
 
 .logoDiv {
