@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../Contexts/UserContext";
 import { Layout, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+
 import "antd/dist/antd.css";
 import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
@@ -13,6 +15,7 @@ const { Header } = Layout;
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
   const accessToken = localStorage.getItem("access_token");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (accessToken) {
@@ -34,7 +37,9 @@ const Navbar = () => {
         <Layout className="layout">
           <Header className="header">
             <div className="logoDiv">
-              <div className="logo">Spotistats</div>
+              <div className="logo" onClick={() => navigate("/dashboard")}>
+                Spotistats
+              </div>
               <div>
                 <Link to="/player">Music Player</Link>
               </div>
