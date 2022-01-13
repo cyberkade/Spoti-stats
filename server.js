@@ -6,13 +6,6 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 
-if (process.env.NODE_ENV === "production") {
-  server.use(express.static(path.resolve(__dirname, "./frontend/build")));
-  server.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./frontend/public", "index.html"));
-  });
-}
-
 server.post("/login", (req, res, next) => {
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
@@ -62,5 +55,12 @@ server.use((err, req, res, next) => {
     stack: err.stack,
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  server.use(express.static(path.resolve(__dirname, "./frontend/build")));
+  server.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./frontend/public", "index.html"));
+  });
+}
 
 module.exports = server;
