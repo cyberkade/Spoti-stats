@@ -1,5 +1,4 @@
 import React from "react";
-// import "../Styles/Login.css";
 
 const Login = () => {
   let redirectURI;

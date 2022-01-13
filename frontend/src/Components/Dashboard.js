@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 
-// import "../Styles/Dashboard.css";
 import Carousel from "./Carousel";
 
 const Dashboard = () => {

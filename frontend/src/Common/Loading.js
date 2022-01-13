@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import "../Styles/Loading.css";
 const Loading = () => {
   function refreshPage() {
     window.location.reload(false);

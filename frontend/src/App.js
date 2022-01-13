@@ -4,10 +4,8 @@ import { UserContext } from "./Contexts/UserContext";
 import { TopArtistsContext } from "./Contexts/TopArtistsContext";
 import { TopTracksContext } from "./Contexts/TopTracksContext";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
+import Landing from "./Components/Landing";
 import Callback from "./Callback";
 import Loading from "./Common/Loading";
 import Artists from "./Components/Artists";
@@ -34,7 +32,7 @@ const App = () => {
 
             <Route path="/" element={<PrivateOutlet />}>
               <Route path="/loading" element={<Loading />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Landing />} />
               <Route path="/artists" element={<Artists />} />
               <Route path="/tracks" element={<Tracks />} />
               <Route path="/player" element={<PlayerPage />} />

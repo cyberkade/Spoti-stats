@@ -4,8 +4,6 @@ import { Layout, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
-import "antd/dist/antd.css";
-// import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
 
 import axiosWithAuth from "../Utils/axiosWithAuth";

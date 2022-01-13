@@ -32,6 +32,7 @@ const useAuth = (code) => {
         navigate("/");
         console.log(err);
       });
+    //eslint-disable-next-line
   }, [code]);
 
   useEffect(() => {
@@ -53,6 +54,7 @@ const useAuth = (code) => {
     }, (expiresIn - 60) * 1000);
 
     return () => clearInterval(interval);
+    //eslint-disable-next-line
   }, [refreshToken, expiresIn]);
   return accessToken;
 };

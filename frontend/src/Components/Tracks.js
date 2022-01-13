@@ -4,7 +4,6 @@ import axiosWithAuth from "../Utils/axiosWithAuth";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 import Track from "./Track";
 
-// import "../Styles/Tracks.css";
 const Tracks = () => {
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
   useEffect(() => {

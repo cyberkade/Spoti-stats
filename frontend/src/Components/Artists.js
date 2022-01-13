@@ -4,7 +4,6 @@ import axiosWithAuth from "../Utils/axiosWithAuth";
 import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import Artist from "./Artist";
 
-// import "../Styles/Artists.css";
 function Artists() {
   const { topArtists, setTopArtists } = useContext(TopArtistsContext);
   useEffect(() => {

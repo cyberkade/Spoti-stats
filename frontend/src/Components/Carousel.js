@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import Artist from "./Artist";
 // import Track from "./Track";
-// import "../Styles/Carousel.css";
 
 function Carousel({ top5 }) {
   const navigate = useNavigate();

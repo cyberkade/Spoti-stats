@@ -1,5 +1,4 @@
 import React from "react";
-// import "../Styles/Tracks.css";
 
 function Track({ track }) {
   const handleClick = () => {
