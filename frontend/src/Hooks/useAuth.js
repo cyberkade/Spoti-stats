@@ -7,7 +7,6 @@ const useAuth = (code) => {
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
   const navigate = useNavigate();
-
   let server;
   if (process.env.NODE_ENV === "production") {
     server = "https://my-spotistats.herokuapp.com";
@@ -16,11 +15,13 @@ const useAuth = (code) => {
   }
 
   useEffect(() => {
+    console.log(code);
     axios
       .post(`${server}/login`, {
         code,
       })
       .then((res) => {
+        console.log(res);
         localStorage.setItem("access_token", res.data.access_token);
         setAccessToken(res.data.access_token);
         setRefreshToken(res.data.refresh_token);
