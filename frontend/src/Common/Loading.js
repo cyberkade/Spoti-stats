@@ -1,8 +1,4 @@
-import React, { useState, useEffect } from "react";
 const Loading = () => {
-  function refreshPage() {
-    window.location.reload(false);
-  }
   return (
     <div className="ball-container">
       <div className="ball-wrapper">
