@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
-import axiosWithAuth from "../Utils/axiosWithAuth";
-import { TopArtistsContext } from "../Contexts/TopArtistsContext";
+// import React, { useContext, useEffect } from "react";
+// import axiosWithAuth from "../Utils/axiosWithAuth";
+// import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 function Artist({ artist }) {
   const handleClick = () => {
     console.log(artist);

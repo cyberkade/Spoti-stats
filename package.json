@@ -2,6 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
+  },
   "main": "server.js",
   "scripts": {
     "devStart": "nodemon index.js",

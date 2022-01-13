@@ -29,6 +29,7 @@ const Navbar = () => {
           console.log(err);
         });
     }
+    // eslint-disable-next-line
   }, []);
   console.log(user);
   return (

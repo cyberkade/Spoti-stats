@@ -25,6 +25,7 @@ function Artists() {
       .catch((err) => {
         console.log(err);
       });
+    // eslint-disable-next-line
   }, []);
   return (
     <div className="artists-container">

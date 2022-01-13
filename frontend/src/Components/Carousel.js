@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Artist from "./Artist";
-import Track from "./Track";
+// import Artist from "./Artist";
+// import Track from "./Track";
 import "../Styles/Carousel.css";
 
 function Carousel({ top5 }) {
   const navigate = useNavigate();
-  const [intervalId, setIntervalId] = useState();
   const [current, setCurrent] = useState(0);
   const length = top5.length;
 
@@ -23,6 +22,7 @@ function Carousel({ top5 }) {
       next();
     }, 5000);
     return () => clearTimeout(autoScroll);
+    // eslint-disable-next-line
   }, [current]);
 
   return (
