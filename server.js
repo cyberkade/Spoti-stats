@@ -6,10 +6,23 @@ const server = express();
 server.use(express.json());
 server.use(cors());
 
+let redirectURI;
+
+if (process.env.NODE_ENV === "production") {
+  server.use(express.static(path.resolve(__dirname, "./frontend/build")));
+  server.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./frontend/public", "index.html"));
+  });
+  redirectURI = "https://my-spotistats.herokuapp.com/";
+}
+if (process.env.NODE_ENV === "development") {
+  redirectURI = "http://localhost:3000/callback";
+}
+
 server.post("/login", (req, res, next) => {
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
-    redirectUri: "http://localhost:3000/callback",
+    redirectUri: redirectURI,
     clientId: process.env.CLIENT_ID || "Spotify client_Id here",
     clientSecret: process.env.CLIENT_SECRET || "shh it's secret",
   });
@@ -30,7 +43,7 @@ server.post("/login", (req, res, next) => {
 server.post("/refresh", (req, res, next) => {
   const refreshToken = req.body.refreshToken;
   const spotifyApi = new SpotifyWebApi({
-    redirectUri: "http://localhost:3000/callback",
+    redirectUri: redirectURI,
     clientId: process.env.CLIENT_ID || "Spotistats client_Id here",
     clientSecret: process.env.CLIENT_SECRET || "shh it's secret",
     refreshToken,
@@ -55,12 +68,5 @@ server.use((err, req, res, next) => {
     stack: err.stack,
   });
 });
-
-if (process.env.NODE_ENV === "production") {
-  server.use(express.static(path.resolve(__dirname, "./frontend/build")));
-  server.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./frontend/public", "index.html"));
-  });
-}
 
 module.exports = server;
