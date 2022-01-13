@@ -27,3 +27,15 @@
   padding: 2px;
   border-radius: 15px;
 }
+
+@media screen and (min-width: 1700px) {
+  .trackImg {
+    width: 400px;
+    height: 400px;
+    margin-top: 25px;
+    border-radius: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

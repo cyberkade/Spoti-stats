@@ -10,7 +10,7 @@ function Track({ track }) {
       {track && (
         <div
           style={{
-            background: ` center / contain no-repeat url(${track.album.images[1].url})`,
+            background: ` center / contain no-repeat url(${track.album.images[0].url})`,
           }}
           className="trackImg"
           alt="top 50 artist"

@@ -2,6 +2,8 @@
   background: none;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  left: -66px;
 }
 
 button.view {
@@ -17,7 +19,8 @@ button.scroll {
   width: 5em;
   height: 4em;
   border-radius: 50%;
-  background: none;
+  background-color: #151515;
+  opacity: 0.8;
   color: #ffa260;
   border: 2px solid;
   padding: 1em 2em;
@@ -64,13 +67,12 @@ button.scroll:active {
 }
 
 .right {
-  margin-left: 50px;
+  margin-left: 80%;
 }
 
 .slide {
   opacity: 0;
   transition-duration: 1s ease-in-out;
-  transform: scale(1.1);
 }
 
 .slide.active {
@@ -91,9 +93,3 @@ button.scroll:active {
     transform: rotateY(0);
   }
 }
-
-/* @media screen and (min-width: 1440px) {
-  .slide {
-    transform: scale(2.5);
-  }
-} */
