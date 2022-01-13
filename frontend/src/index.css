@@ -1,3 +1,10 @@
+@import "./styles/Artists.css";
+@import "./styles/Carousel.css";
+@import "./styles/Dashboard.css";
+@import "./styles/Loading.css";
+@import "./styles/Login.css";
+@import "./styles/Navbar.css";
+@import "./styles/Tracks.css";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
