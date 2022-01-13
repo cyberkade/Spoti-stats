@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 
@@ -8,6 +8,12 @@ import Carousel from "./Carousel";
 const Dashboard = () => {
   const { topArtists } = useContext(TopArtistsContext);
   const { topTracks } = useContext(TopTracksContext);
+  const [isLoggedIn, setLoggedIn] = useState();
+
+  useEffect(() => {
+    setLoggedIn(true);
+  }, []);
+
   return (
     <>
       <section>
