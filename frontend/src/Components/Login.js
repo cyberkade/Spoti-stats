@@ -4,7 +4,7 @@ import React from "react";
 const Login = () => {
   let redirectURI;
   if (process.env.NODE_ENV === "production") {
-    redirectURI = "https://my-spotistats.herokuapp.com/";
+    redirectURI = "https://my-spotistats.herokuapp.com/callback";
   } else {
     redirectURI = "http://localhost:3000/callback";
   }
