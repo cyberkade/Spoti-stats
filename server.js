@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "production") {
   server.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./frontend/public", "index.html"));
   });
-  redirectURI = "https://my-spotistats.herokuapp.com/callback";
+  redirectURI = "https://my-spotistats.herokuapp.com";
 }
 if (process.env.NODE_ENV === "development") {
   redirectURI = "http://localhost:3000/callback";

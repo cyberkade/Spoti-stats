@@ -1,9 +1,13 @@
-import React from "react";
+import { useSearchParams } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const Login = () => {
   let redirectURI;
+  let [searchParams] = useSearchParams();
+  const code = searchParams.get("code");
+  useAuth(code);
   if (process.env.NODE_ENV === "production") {
-    redirectURI = "https://my-spotistats.herokuapp.com/callback";
+    redirectURI = "https://my-spotistats.herokuapp.com";
   } else {
     redirectURI = "http://localhost:3000/callback";
   }
