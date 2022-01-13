@@ -4,7 +4,7 @@ import axiosWithAuth from "../Utils/axiosWithAuth";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 import Track from "./Track";
 
-import "../Styles/Tracks.css";
+// import "../Styles/Tracks.css";
 const Tracks = () => {
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
   useEffect(() => {
@@ -25,6 +25,7 @@ const Tracks = () => {
       .catch((err) => {
         console.log(err);
       });
+    //eslint-disable-next-line
   }, []);
   console.log(topTracks);
   return (
