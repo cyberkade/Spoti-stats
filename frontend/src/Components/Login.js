@@ -5,6 +5,7 @@ const Login = () => {
   let redirectURI;
   let [searchParams] = useSearchParams();
   const code = searchParams.get("code");
+  console.log(code);
   useAuth(code);
   if (process.env.NODE_ENV === "production") {
     redirectURI = "https://my-spotistats.herokuapp.com/";
