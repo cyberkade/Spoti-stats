@@ -9,16 +9,16 @@ const useAuth = (code) => {
   const navigate = useNavigate();
   let server;
   if (process.env.NODE_ENV === "production") {
-    server = "https://my-spotistats.herokuapp.com";
+    server = "https://my-spotistats.herokuapp.com/";
   } else {
-    server = "http://localhost:3001";
+    server = "http://localhost:3001/";
   }
 
   useEffect(() => {
     if (code) {
       console.log(code);
       axios
-        .post(`${server}/login`, {
+        .post(`${server}login`, {
           code,
         })
         .then((res) => {
@@ -43,7 +43,7 @@ const useAuth = (code) => {
     if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post(`${server}/refresh`, {
+        .post(`${server}refresh`, {
           refreshToken,
         })
         .then((res) => {

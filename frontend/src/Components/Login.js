@@ -8,9 +8,9 @@ const Login = () => {
   console.log(code);
   useAuth(code);
   if (process.env.NODE_ENV === "production") {
-    redirectURI = "https://my-spotistats.herokuapp.com/";
+    redirectURI = "https://kades-spotistats.netlify.app/";
   } else {
-    redirectURI = "http://localhost:3000";
+    redirectURI = "http://localhost:3000/";
   }
   const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=a4d359510d674b32af2ac4ff821e067d&response_type=code&redirect_uri=${redirectURI}&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state%20playlist-modify-public%20user-top-read`;
   return (

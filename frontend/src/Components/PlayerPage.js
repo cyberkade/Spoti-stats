@@ -12,9 +12,9 @@ const spotifyApi = new SpotifyWebApi({
 let server;
 
 if (process.env.NODE_ENV === "production") {
-  server = "https://my-spotistats.herokuapp.com";
+  server = "https://my-spotistats.herokuapp.com/";
 } else {
-  server = "http://localhost:3001";
+  server = "http://localhost:3001/";
 }
 
 function PlayerPage() {
@@ -36,7 +36,7 @@ function PlayerPage() {
       return;
     } else
       axios
-        .get(`${server}/lyrics`, {
+        .get(`${server}lyrics`, {
           params: {
             track: playingTrack.title,
             artist: playingTrack.artist,
