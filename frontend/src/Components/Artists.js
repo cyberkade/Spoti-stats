@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import axiosWithAuth from "../Utils/axiosWithAuth";
-
-import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import Artist from "./Artist";
+import Loading from "../Common/Loading";
+import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 
 function Artists() {
   const { topArtists, setTopArtists } = useContext(TopArtistsContext);
@@ -28,10 +28,13 @@ function Artists() {
   }, []);
   return (
     <div className="artists-container">
-      {topArtists &&
+      {topArtists && topArtists.length > 5 ? (
         topArtists.map((artist, index) => (
           <Artist key={index} artist={{ ...artist, top: index + 1 }} />
-        ))}
+        ))
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 }

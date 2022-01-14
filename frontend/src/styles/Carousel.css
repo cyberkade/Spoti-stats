@@ -43,7 +43,7 @@ button.scroll:active {
 .carousel-container {
   width: 40vw;
   height: 87vh;
-  margin: 1vw 5vw;
+  margin: 1vw 7vw;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

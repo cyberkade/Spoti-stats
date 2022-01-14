@@ -16,26 +16,9 @@ const Dashboard = () => {
 
   return (
     <>
-      <section>
+      <section className="carousel-section">
         <Carousel top5={topArtists} />
-        {/* {top5Artists.map((artist, index) => (
-         <img
-          src={artist.images[1].url}
-          className="artistImg"
-          key={index}
-          alt="top 5 listened to artist"
-        />
-      ))}  */}
         <Carousel top5={topTracks} />
-        {/* 
-      {top5Tracks.map((track, index) => (
-        <img
-          src={track.album.images[1].url}
-          className="trackImg"
-          key={index}
-          alt={track.name}
-        />
-      ))} */}
       </section>
     </>
   );

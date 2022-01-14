@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import axiosWithAuth from "../Utils/axiosWithAuth";
-
-import { TopTracksContext } from "../Contexts/TopTracksContext";
+import Loading from "../Common/Loading";
 import Track from "./Track";
+import { TopTracksContext } from "../Contexts/TopTracksContext";
 
 const Tracks = () => {
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
@@ -29,10 +29,13 @@ const Tracks = () => {
   console.log(topTracks);
   return (
     <div className="tracks-container">
-      {topTracks &&
+      {topTracks && topTracks.length > 5 ? (
         topTracks.map((track, index) => (
           <Track key={index} track={{ ...track, top: index + 1 }} />
-        ))}
+        ))
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };
