@@ -14,12 +14,11 @@ server.use(bodyParser.urlencoded({ extended: true }));
 let redirectURI;
 
 if (process.env.NODE_ENV === "production") {
-  // "heroku-postbuild": "cd frontend && npm install && npm run build"
   // server.use(express.static(path.resolve(__dirname, "./frontend/build")));
   // server.get("*", (req, res) => {
   //   res.sendFile(path.join(__dirname, "./frontend/public", "index.html"));
   // });
-  redirectURI = "https://kades-spotistats.netlify.app/";
+  redirectURI = "https://my-spotistats.herokuapp.com/";
 }
 if (process.env.NODE_ENV === "development") {
   redirectURI = "http://localhost:3000";

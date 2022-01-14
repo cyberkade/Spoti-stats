@@ -7,7 +7,7 @@ const Login = () => {
   const code = searchParams.get("code");
   useAuth(code);
   if (process.env.NODE_ENV === "production") {
-    redirectURI = "https://kades-spotistats.netlify.app/";
+    redirectURI = "https://my-spotistats.herokuapp.com/";
   } else {
     redirectURI = "http://localhost:3000";
   }
