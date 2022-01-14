@@ -24,6 +24,9 @@ if (process.env.NODE_ENV === "production") {
 if (process.env.NODE_ENV === "development") {
   redirectURI = "http://localhost:3000";
 }
+server.get("/", (req, res) => {
+  res.status(200).json({ message: "server up" });
+});
 
 server.post("/login", (req, res, next) => {
   const code = req.body.code;
