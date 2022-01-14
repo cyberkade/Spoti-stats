@@ -24,6 +24,14 @@ if (process.env.NODE_ENV === "development") {
   redirectURI = "http://localhost:3000";
 }
 
+server.get("*", (req, res) => {
+  let url = path.join(__dirname, "../client/build", "index.html");
+  if (!url.startsWith("/app/"))
+    // since we're on local windows
+    url = url.substring(1);
+  res.sendFile(url);
+});
+
 server.post("/login", (req, res, next) => {
   const code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
