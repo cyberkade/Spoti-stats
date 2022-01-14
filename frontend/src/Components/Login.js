@@ -8,7 +8,7 @@ const Login = () => {
   console.log(code);
   useAuth(code);
   if (process.env.NODE_ENV === "production") {
-    redirectURI = "https://kades-spotistats.netlify.app/";
+    redirectURI = "https://my-spotistats.netlify.app/";
   } else {
     redirectURI = "http://localhost:3000/";
   }
