@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { UserContext } from "../Contexts/UserContext";
+import React, { useState, useEffect } from "react";
 import { Layout, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +10,7 @@ import axiosWithAuth from "../Utils/axiosWithAuth";
 const { Header } = Layout;
 
 const Navbar = () => {
-  const { user, setUser } = useContext(UserContext);
+  const [user, setUser] = useState();
   const accessToken = localStorage.getItem("access_token");
   const navigate = useNavigate();
 
@@ -20,7 +19,6 @@ const Navbar = () => {
       axiosWithAuth()
         .get("/me")
         .then((res) => {
-          console.log(res.data);
           setUser(res.data);
         })
         .catch((err) => {

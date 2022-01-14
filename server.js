@@ -1,11 +1,16 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const lyricsFinder = require("lyrics-finder");
 const SpotifyWebApi = require("spotify-web-api-node");
+
 const server = express();
 server.use(express.json());
 server.use(cors());
 
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
 let redirectURI;
 
 if (process.env.NODE_ENV === "production") {
@@ -16,7 +21,7 @@ if (process.env.NODE_ENV === "production") {
   redirectURI = "https://my-spotistats.herokuapp.com";
 }
 if (process.env.NODE_ENV === "development") {
-  redirectURI = "http://localhost:3000/callback";
+  redirectURI = "http://localhost:3000";
 }
 
 server.post("/login", (req, res, next) => {
@@ -60,6 +65,13 @@ server.post("/refresh", (req, res, next) => {
     .catch((err) => {
       next(err);
     });
+});
+
+server.get("/lyrics", async (req, res) => {
+  const lyrics =
+    (await lyricsFinder(req.query.artist, req.query.track)) ||
+    "No Lyrics Found";
+  res.json({ lyrics });
 });
 
 server.use((err, req, res, next) => {

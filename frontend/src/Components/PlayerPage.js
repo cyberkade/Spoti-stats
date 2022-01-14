@@ -2,13 +2,20 @@ import React, { useState, useEffect, useContext } from "react";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./TrackSearchResult";
-
+import axios from "axios";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 
 import Player from "./Player";
 const spotifyApi = new SpotifyWebApi({
   client_id: "a4d359510d674b32af2ac4ff821e067d",
 });
+let server;
+
+if (process.env.NODE_ENV === "production") {
+  server = "https://my-spotistats.herokuapp.com";
+} else {
+  server = "http://localhost:3001";
+}
 
 function PlayerPage() {
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
@@ -16,17 +23,35 @@ function PlayerPage() {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [playingTrack, setPlayingTrack] = useState([]);
+  const [lyrics, setLyrics] = useState("");
 
   const chooseTrack = (track) => {
     setPlayingTrack(track);
     setSearch("");
-    // setLyrics("")
+    setLyrics("");
   };
 
   useEffect(() => {
+    if (!playingTrack) {
+      return;
+    } else
+      axios
+        .get(`${server}/lyrics`, {
+          params: {
+            track: playingTrack.title,
+            artist: playingTrack.artist,
+          },
+        })
+        .then((res) => {
+          setLyrics(res.data.lyrics);
+        })
+        .catch((err) => console.log(err));
+  }, [playingTrack]);
+
+  useEffect(() => {
     setTopTracks(topTracks);
+    //eslint-disable-next-line
   }, []);
-  console.log(topTracks);
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
@@ -45,8 +70,8 @@ function PlayerPage() {
             (smallest, image) => {
               if (image.height < smallest.height) return image;
               return smallest;
-            },
-            track.album.images[0]
+            }
+            // track.album.images[0]
           );
           return {
             artists: track.artists.map((artist) => artist.name),
@@ -77,11 +102,11 @@ function PlayerPage() {
             chooseTrack={chooseTrack}
           />
         ))}
-        {/* {searchResults.length === 0 && (
+        {searchResults.length === 0 && (
           <div className="text-center" style={{ whiteSpace: "pre" }}>
             {lyrics}
           </div>
-        )} */}
+        )}
       </div>
       <div>
         <Player accessToken={accessToken} trackUri={playingTrack?.uri} />

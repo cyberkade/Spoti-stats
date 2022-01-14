@@ -15,23 +15,27 @@ const useAuth = (code) => {
   }
 
   useEffect(() => {
-    console.log(code);
-    axios
-      .post(`${server}/login`, {
-        code,
-      })
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem("access_token", res.data.access_token);
-        setAccessToken(res.data.access_token);
-        setRefreshToken(res.data.refresh_token);
-        setExpiresIn(res.data.expires_in);
-        navigate("/dashboard");
-      })
-      .catch((err) => {
-        navigate("/");
-        console.log(err);
-      });
+    if (code) {
+      console.log(code);
+      axios
+        .post(`${server}/login`, {
+          code,
+        })
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("access_token", res.data.access_token);
+          setAccessToken(res.data.access_token);
+          setRefreshToken(res.data.refresh_token);
+          setExpiresIn(res.data.expires_in);
+          navigate("/dashboard");
+        })
+        .catch((err) => {
+          navigate("/");
+          console.log(err);
+        });
+    } else {
+      console.log("code param no exist");
+    }
     //eslint-disable-next-line
   }, [code]);
 
