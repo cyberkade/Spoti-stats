@@ -9,8 +9,8 @@ import Player from "./Player";
 const spotifyApi = new SpotifyWebApi({
   client_id: "a4d359510d674b32af2ac4ff821e067d",
 });
-let server;
 
+let server;
 if (process.env.NODE_ENV === "production") {
   server = "https://my-spotistats.herokuapp.com/";
 } else {

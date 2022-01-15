@@ -26,6 +26,11 @@ function Carousel({ top5 }) {
 
   return (
     <div className="carousel-container">
+      {top5[0].album ? (
+        <p className="top-text">Top Tracks</p>
+      ) : (
+        <p className="top-text">Top Artists</p>
+      )}
       {top5 &&
         top5.map((element, index) => {
           return (
@@ -80,28 +85,23 @@ function Carousel({ top5 }) {
             </>
           );
         })}
-
-      {/* <div className="btn-cont">
-        <button className="scroll left" onClick={prev}>
+      <div className="btn-cont-mobile">
+        <button className="scroll mobile" onClick={prev}>
           &lt;
         </button>
-        <button className="scroll right" onClick={next}>
+        <button className="scroll mobile" onClick={next}>
           &gt;
         </button>
-      </div> */}
-
+      </div>
       {top5[0].album ? (
-        <>
-          {/* <div className="empty" /> */}
-          <button
-            className="view"
-            onClick={() => {
-              navigate("/tracks");
-            }}
-          >
-            View Tracks
-          </button>
-        </>
+        <button
+          className="view"
+          onClick={() => {
+            navigate("/tracks");
+          }}
+        >
+          View Tracks
+        </button>
       ) : (
         <button
           className="view"

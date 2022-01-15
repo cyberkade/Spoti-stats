@@ -2,11 +2,11 @@ import { useSearchParams } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 const Login = () => {
-  let redirectURI;
   let [searchParams] = useSearchParams();
   const code = searchParams.get("code");
   console.log(code);
   useAuth(code);
+  let redirectURI;
   if (process.env.NODE_ENV === "production") {
     redirectURI = "https://my-spotistats.netlify.app/";
   } else {

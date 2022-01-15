@@ -7,6 +7,7 @@ const useAuth = (code) => {
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
   const navigate = useNavigate();
+
   let server;
   if (process.env.NODE_ENV === "production") {
     server = "https://my-spotistats.herokuapp.com/";

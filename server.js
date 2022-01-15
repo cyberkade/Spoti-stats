@@ -11,14 +11,16 @@ server.use(cors());
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-let redirectURI;
 
+let redirectURI;
 if (process.env.NODE_ENV === "production") {
   // "heroku-postbuild": "cd frontend && npm install && npm run build"
-  // server.use(express.static(path.resolve(__dirname, "./frontend/build")));
-  // server.get("*", (req, res) => {
-  //   res.sendFile(path.join(__dirname, "./frontend/public", "index.html"));
-  // });
+  // server.use(express.static(path.resolve(__dirname, "../frontend/build")));
+  //   server.get("*", (req, res) => {
+  //       res.sendFile(
+  //           path.resolve(__dirname, "../frontend", "build", "index.html")
+  //       );
+  //   });
   redirectURI = "https://my-spotistats.netlify.app/";
 }
 if (process.env.NODE_ENV === "development") {
