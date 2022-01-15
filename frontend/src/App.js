@@ -17,10 +17,12 @@ import { Outlet } from "react-router-dom";
 const App = () => {
   const [topArtists, setTopArtists] = useState();
   const [topTracks, setTopTracks] = useState();
-  const accessToken = localStorage.getItem("access_token");
+  let accessToken;
+  accessToken = localStorage.getItem("access_token");
+  console.log(accessToken);
   return (
     <>
-      {accessToken && <Navbar />}
+      {accessToken && <Navbar accessToken={accessToken} />}
       <TopArtistsContext.Provider value={{ topArtists, setTopArtists }}>
         <TopTracksContext.Provider value={{ topTracks, setTopTracks }}>
           <Routes>

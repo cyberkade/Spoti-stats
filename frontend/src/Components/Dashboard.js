@@ -8,11 +8,11 @@ const Dashboard = () => {
   const { topArtists } = useContext(TopArtistsContext);
   const { topTracks } = useContext(TopTracksContext);
   // eslint-disable-next-line
-  const [isLoggedIn, setLoggedIn] = useState();
+  // const [isLoggedIn, setLoggedIn] = useState();
 
-  useEffect(() => {
-    setLoggedIn(true);
-  }, []);
+  // useEffect(() => {
+  //   setLoggedIn(true);
+  // }, []);
 
   return (
     <>
