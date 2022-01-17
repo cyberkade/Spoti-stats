@@ -14,13 +14,11 @@ const Landing = () => {
     axiosWithAuth()
       .get("/me/top/artists?limit=5&offset=0&time_range=long_term")
       .then((res) => {
-        if (res.data.items === undefined) {
-          console.log("worked", res.data);
+        if (res.data.items.length === 0) {
           setTopArtists({
             noStats: "We couldn't access your top artists, keep jammin'!",
           });
         } else {
-          console.log("no stats", res.data);
           setTopArtists(res.data.items);
         }
       })
@@ -30,13 +28,11 @@ const Landing = () => {
     axiosWithAuth()
       .get("/me/top/tracks?limit=5&offset=0&time_range=long_term")
       .then((res) => {
-        if (res.data.items === undefined) {
-          console.log("worked", res.data);
+        if (res.data.items.length === 0) {
           setTopTracks({
             noStats: "We couldn't access your top tracks, keep jammin'!",
           });
         } else {
-          console.log("no stats", res.data);
           setTopTracks(res.data.items);
         }
       })
