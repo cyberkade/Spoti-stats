@@ -19,7 +19,6 @@ const App = () => {
   const [topTracks, setTopTracks] = useState();
   let accessToken;
   accessToken = localStorage.getItem("access_token");
-  console.log(accessToken);
   return (
     <>
       {accessToken && <Navbar accessToken={accessToken} />}

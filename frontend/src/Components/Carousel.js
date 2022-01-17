@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 // import Artist from "./Artist";
 // import Track from "./Track";
 
@@ -34,17 +35,37 @@ function Carousel({ top5 }) {
       {top5 &&
         top5.map((element, index) => {
           return (
-            <>
-              <div
-                className={index === current ? "slide active" : "slide"}
-                key={index}
-              >
-                {index === current && top5[0].album ? (
+            <div
+              key={index}
+              className={index === current ? "slide active" : "slide"}
+            >
+              {index === current && top5[0].album ? (
+                <div
+                  style={{
+                    background: ` center / contain no-repeat url(${element.album.images[1].url}) `,
+                  }}
+                  className="trackImg"
+                  alt="top 50 artist"
+                >
+                  <span className="top-num-display">{index + 1}</span>
+                  <div className="btn-cont">
+                    <button className="scroll left" onClick={prev}>
+                      &lt;
+                    </button>
+                    <button className="scroll right" onClick={next}>
+                      &gt;
+                    </button>
+                  </div>
+                  <p className="top-text-display">{element.name}</p>
+                </div>
+              ) : (
+                // <Track track={{ ...element, top: index + 1 }} />
+                index === current && (
                   <div
                     style={{
-                      background: ` center / contain no-repeat url(${element.album.images[1].url}) `,
+                      background: ` center / cover no-repeat url(${element.images[1].url})`,
                     }}
-                    className="trackImg"
+                    className="artistImg"
                     alt="top 50 artist"
                   >
                     <span className="top-num-display">{index + 1}</span>
@@ -58,31 +79,9 @@ function Carousel({ top5 }) {
                     </div>
                     <p className="top-text-display">{element.name}</p>
                   </div>
-                ) : (
-                  // <Track track={{ ...element, top: index + 1 }} />
-                  index === current && (
-                    <div
-                      style={{
-                        background: ` center / cover no-repeat url(${element.images[1].url})`,
-                      }}
-                      className="artistImg"
-                      alt="top 50 artist"
-                    >
-                      <span className="top-num-display">{index + 1}</span>
-                      <div className="btn-cont">
-                        <button className="scroll left" onClick={prev}>
-                          &lt;
-                        </button>
-                        <button className="scroll right" onClick={next}>
-                          &gt;
-                        </button>
-                      </div>
-                      <p className="top-text-display">{element.name}</p>
-                    </div>
-                  )
-                )}
-              </div>
-            </>
+                )
+              )}
+            </div>
           );
         })}
       <div className="btn-cont-mobile">

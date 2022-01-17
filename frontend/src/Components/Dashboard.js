@@ -20,12 +20,12 @@ const Dashboard = () => {
         {topArtists.noStats ? (
           <div className="noStats">{topArtists.noStats}</div>
         ) : (
-          <Carousel top5={topArtists} />
+          <Carousel key="artists" top5={topArtists} />
         )}
         {topTracks.noStats ? (
           <div className="noStats">{topTracks.noStats}</div>
         ) : (
-          <Carousel top5={topTracks} />
+          <Carousel key="tracks" top5={topTracks} />
         )}
       </section>
     </>
