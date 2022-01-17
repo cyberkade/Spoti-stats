@@ -18,8 +18,9 @@ const Landing = () => {
           setTopArtists({
             noStats: "We couldn't access your top artists, keep jammin'!",
           });
+        } else {
+          setTopArtists(res.data.items);
         }
-        setTopArtists(res.data.items);
       })
       .catch((err) => {
         console.log(err);
@@ -31,8 +32,9 @@ const Landing = () => {
           setTopTracks({
             noStats: "We couldn't access your top tracks, keep jammin'!",
           });
+        } else {
+          setTopTracks(res.data.items);
         }
-        setTopTracks(res.data.items);
       })
       .catch((err) => {
         console.log(err);
