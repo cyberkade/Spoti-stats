@@ -11,3 +11,19 @@ section.carousel-section {
   justify-content: space-evenly;
   align-content: center;
 }
+
+div.noStats {
+  width: 40vw;
+  height: 87vh;
+  margin: 1vw 7vw;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 5px;
+  box-shadow: 1px 0px 10px gray;
+  font-size: 2em;
+  text-align: center;
+  padding: 1.5em;
+}

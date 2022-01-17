@@ -17,8 +17,16 @@ const Dashboard = () => {
   return (
     <>
       <section className="carousel-section">
-        <Carousel top5={topArtists} />
-        <Carousel top5={topTracks} />
+        {topArtists.noStats ? (
+          <div className="noStats">{topArtists.noStats}</div>
+        ) : (
+          <Carousel top5={topArtists} />
+        )}
+        {topTracks.noStats ? (
+          <div className="noStats">{topTracks.noStats}</div>
+        ) : (
+          <Carousel top5={topTracks} />
+        )}
       </section>
     </>
   );
