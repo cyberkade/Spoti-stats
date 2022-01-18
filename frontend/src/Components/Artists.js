@@ -48,15 +48,6 @@ function Artists() {
       });
   };
 
-  const handleSwitch = () => {
-    if (statFeedback === "All Time") {
-      getRecentArtists();
-    }
-    if (statFeedback === "Most Recent") {
-      getAllTimeArtists();
-    }
-  };
-
   const getRecentArtists = async () => {
     setFetching(true);
     const res1 = await axiosWithAuth().get(
@@ -78,10 +69,19 @@ function Artists() {
   };
 
   const getFilteredSearch = () => {
-    const filteredSearch = topArtists.filter((track) => {
-      return track.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const filteredSearch = topArtists.filter((artist) => {
+      return artist.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
     return filteredSearch;
+  };
+
+  const handleSwitch = () => {
+    if (statFeedback === "All Time") {
+      getRecentArtists();
+    }
+    if (statFeedback === "Most Recent") {
+      getAllTimeArtists();
+    }
   };
 
   return (

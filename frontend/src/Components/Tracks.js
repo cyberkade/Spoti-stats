@@ -5,16 +5,27 @@ import Track from "./Track";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
 
 import { Breadcrumb } from "antd";
-import { HomeOutlined, SlidersOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  HomeOutlined,
+  SlidersOutlined,
+  LoadingOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Form } from "react-bootstrap";
 
 const Tracks = () => {
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [isFetching, setFetching] = useState(false);
-  const [statFeedback, setStatFeedback] = useState("");
+  const [statFeedback, setStatFeedback] = useState("All Time");
 
   useEffect(() => {
+    getAllTimeTracks();
+    //eslint-disable-next-line
+  }, []);
+
+  const getAllTimeTracks = async () => {
+    setFetching(true);
     axiosWithAuth()
       .get("/me/top/tracks?limit=50&offset=0&time_range=long_term")
       .then((res1) => {
@@ -24,25 +35,27 @@ const Tracks = () => {
           .then((res) => {
             res.data.items.shift();
             setTopTracks([...top50, ...res.data.items]);
+            setFetching(false);
+            setStatFeedback("All Time");
           })
           .catch((err) => {
+            setFetching(false);
             console.log(err);
           });
       })
       .catch((err) => {
         console.log(err);
       });
-    //eslint-disable-next-line
-  }, []);
+  };
 
   const getRecentTracks = async () => {
     setFetching(true);
     const res1 = await axiosWithAuth().get(
-      "/me/top/tracks?limit=50&offset=0&time_range=long_term"
+      "/me/top/tracks?limit=50&offset=0&time_range=short_term"
     );
     const top50 = res1.data.items;
     axiosWithAuth()
-      .get("/me/top/tracks?limit=50&offset=49&time_range=long_term")
+      .get("/me/top/tracks?limit=50&offset=49&time_range=short_term")
       .then((res) => {
         res.data.items.shift();
         setTopTracks([...top50, ...res.data.items]);
@@ -55,12 +68,27 @@ const Tracks = () => {
       });
   };
 
-  console.log(topTracks[0]);
   const getFilteredSearch = () => {
     const filteredSearch = topTracks.filter((track) => {
-      return track.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const artistsSearch = track.artists.filter((artist) =>
+        artist.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      return (
+        track.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        artistsSearch.length > 0
+      );
     });
+    console.log(filteredSearch);
     return filteredSearch;
+  };
+
+  const handleSwitch = () => {
+    if (statFeedback === "All Time") {
+      getRecentTracks();
+    }
+    if (statFeedback === "Most Recent") {
+      getAllTimeTracks();
+    }
   };
 
   return (
@@ -85,9 +113,21 @@ const Tracks = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ width: "50%", position: "relative", left: "-30px" }}
         />
-        <div>
+        <div
+          onClick={() => {
+            handleSwitch();
+          }}
+          style={{ marginRight: "20px" }}
+        >
           <span className="feedback wiggle">{statFeedback}</span>
-          <SlidersOutlined spin={isFetching} style={{ marginLeft: "8px" }} />
+          {!isFetching && (
+            <SlidersOutlined
+              className="wiggle"
+              spin={isFetching}
+              style={{ marginLeft: "8px" }}
+            />
+          )}
+          {isFetching && <LoadingOutlined />}
         </div>
       </div>
       <div className="tracks-container">
