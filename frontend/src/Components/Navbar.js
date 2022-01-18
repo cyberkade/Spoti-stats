@@ -31,13 +31,13 @@ const Navbar = ({ accessToken }) => {
       {user && (
         <Layout className="layout">
           <Header className="header">
-            <div className="logoDiv">
+            <div className="navWrapper">
               <div className="logo" onClick={() => navigate("/dashboard")}>
                 Spotistats
               </div>
-              <div>
-                <Link to="/player">Music Player</Link>
-              </div>
+              <Link className="player-link" to="/player">
+                Music Player
+              </Link>
               <div className="userInfo-and-profilePic">
                 <div className="userInfo">
                   <div className="username"> {user.display_name} </div>

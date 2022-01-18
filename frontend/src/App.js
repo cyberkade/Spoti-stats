@@ -11,9 +11,7 @@ import Tracks from "./Components/Tracks";
 import Navbar from "./Components/Navbar";
 import PlayerPage from "./Components/PlayerPage";
 
-import { Routes, Route, Navigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
-
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 const App = () => {
   const [topArtists, setTopArtists] = useState();
   const [topTracks, setTopTracks] = useState();
