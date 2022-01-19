@@ -6,7 +6,7 @@ function TrackSearchResult({ track, chooseTrack }) {
   }
   return (
     <div
-      className="d-flex m-2 align-items-center"
+      className=" search-result d-flex m-2 align-items-center"
       style={{ cursor: "pointer" }}
       onClick={handlePlay}
     >

@@ -1,0 +1,45 @@
+.player-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
+}
+
+.lyrics {
+  width: 70vw;
+  text-align: center;
+}
+
+.player-display {
+  margin: 10px;
+  overflow-y: scroll;
+}
+
+.search-result {
+  box-shadow: 0px 0px 5px -2px gray;
+}
+
+.search-results {
+  width: 70vw;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(241, 241, 241, 0.6);
+}

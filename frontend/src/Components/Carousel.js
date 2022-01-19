@@ -32,6 +32,7 @@ function Carousel({ top5 }) {
       ) : (
         <p className="top-text">Top Artists</p>
       )}
+
       {top5 &&
         top5.map((element, index) => {
           return (
@@ -39,12 +40,16 @@ function Carousel({ top5 }) {
               key={index}
               className={index === current ? "slide active" : "slide"}
             >
-              {index === current && top5[0].album ? (
+              {index === current && (
                 <div
                   style={{
-                    background: ` center / contain no-repeat url(${element.album.images[1].url}) `,
+                    background: ` center / contain no-repeat url(${
+                      top5[0].album
+                        ? element.album.images[1].url
+                        : element.images[1].url
+                    }) `,
                   }}
-                  className="trackImg"
+                  className="top-image"
                   alt="top 50 artist"
                 >
                   <span className="top-num-display">{index + 1}</span>
@@ -58,32 +63,11 @@ function Carousel({ top5 }) {
                   </div>
                   <p className="top-text-display">{element.name}</p>
                 </div>
-              ) : (
-                // <Track track={{ ...element, top: index + 1 }} />
-                index === current && (
-                  <div
-                    style={{
-                      background: ` center / cover no-repeat url(${element.images[1].url})`,
-                    }}
-                    className="artistImg"
-                    alt="top 50 artist"
-                  >
-                    <span className="top-num-display">{index + 1}</span>
-                    <div className="btn-cont">
-                      <button className="scroll left" onClick={prev}>
-                        &lt;
-                      </button>
-                      <button className="scroll right" onClick={next}>
-                        &gt;
-                      </button>
-                    </div>
-                    <p className="top-text-display">{element.name}</p>
-                  </div>
-                )
               )}
             </div>
           );
         })}
+
       <div className="btn-cont-mobile">
         <button className="scroll mobile" onClick={prev}>
           &lt;
@@ -92,6 +76,7 @@ function Carousel({ top5 }) {
           &gt;
         </button>
       </div>
+
       {top5[0].album ? (
         <button
           className="view"

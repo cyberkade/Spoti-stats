@@ -4,6 +4,8 @@ import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./TrackSearchResult";
 import axios from "axios";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
+import { Breadcrumb } from "antd";
+import { HomeOutlined, SoundOutlined } from "@ant-design/icons";
 
 import Player from "./Player";
 const spotifyApi = new SpotifyWebApi({
@@ -26,6 +28,7 @@ function PlayerPage() {
   const [lyrics, setLyrics] = useState("");
 
   const chooseTrack = (track) => {
+    console.log(track.artists);
     setPlayingTrack(track);
     setSearch("");
     setLyrics("");
@@ -34,18 +37,18 @@ function PlayerPage() {
   useEffect(() => {
     if (!playingTrack) {
       return;
-    } else
-      axios
-        .get(`${server}lyrics`, {
-          params: {
-            track: playingTrack.title,
-            artist: playingTrack.artist,
-          },
-        })
-        .then((res) => {
-          setLyrics(res.data.lyrics);
-        })
-        .catch((err) => console.log(err));
+    } else console.log(playingTrack.artists);
+    axios
+      .get(`${server}lyrics`, {
+        params: {
+          track: playingTrack.title,
+          artist: playingTrack.artists,
+        },
+      })
+      .then((res) => {
+        setLyrics(res.data.lyrics);
+      })
+      .catch((err) => console.log(err));
   }, [playingTrack]);
 
   useEffect(() => {
@@ -87,31 +90,46 @@ function PlayerPage() {
   }, [search, accessToken]);
 
   return (
-    <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
-      <Form.Control
-        type="search"
-        placeholder="Search Songs/Artists"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
+    <div className="container player-wrapper">
+      <div className="toolbar">
+        <div className="breadcrumbs">
+          <Breadcrumb>
+            <Breadcrumb.Item href="/dashboard">
+              <HomeOutlined />
+              <span className="bc">Dashboard</span>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>
+              <SoundOutlined />
+              <span className="bc-active">Player</span>
+            </Breadcrumb.Item>
+          </Breadcrumb>
+        </div>
+        <Form.Control
+          type="search"
+          placeholder="Search Songs/Artists"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{ width: "75%" }}
+        />
+      </div>
+      <div className="player-display">
         {searchResults.map((track) => (
-          <TrackSearchResult
-            track={track}
-            key={track.uri}
-            chooseTrack={chooseTrack}
-          />
+          <div className="search-results">
+            <TrackSearchResult
+              track={track}
+              key={track.uri}
+              chooseTrack={chooseTrack}
+            />
+          </div>
         ))}
         {searchResults.length === 0 && (
-          <div className="text-center" style={{ whiteSpace: "pre" }}>
+          <div className="lyrics" style={{ whiteSpace: "pre" }}>
             {lyrics}
           </div>
         )}
       </div>
-      <div>
-        <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
-      </div>
-    </Container>
+      <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+    </div>
   );
 }
 

@@ -7,7 +7,7 @@ import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import { Breadcrumb } from "antd";
 import {
   HomeOutlined,
-  SlidersOutlined,
+  ControlOutlined,
   LoadingOutlined,
   UserOutlined,
 } from "@ant-design/icons";
@@ -114,7 +114,7 @@ function Artists() {
         >
           <span className="feedback wiggle">{statFeedback}</span>
           {!isFetching && (
-            <SlidersOutlined
+            <ControlOutlined
               className="wiggle"
               spin={isFetching}
               style={{ marginLeft: "8px" }}
@@ -123,7 +123,7 @@ function Artists() {
           {isFetching && <LoadingOutlined />}
         </div>
       </div>
-      <div className="artists-container">
+      <div className="top-display">
         {topArtists && topArtists.length > 5 ? (
           getFilteredSearch().map((artist, index) => (
             <Artist key={index} artist={{ ...artist, top: index + 1 }} />

@@ -145,10 +145,10 @@ table {
 } */
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "antd/dist/antd.css";
-@import "./styles/Artists.css";
+@import "./styles/Top.css";
 @import "./styles/Loading.css";
 @import "./styles/Login.css";
-@import "./styles/Tracks.css";
 @import "./styles/Navbar.css";
 @import "./styles/Dashboard.css";
 @import "./styles/Carousel.css";
+@import "./styles/Player.css";
