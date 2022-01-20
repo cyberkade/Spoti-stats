@@ -104,7 +104,6 @@ function Artists() {
           placeholder="Search Top Artists"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ width: "50%", position: "relative", left: "-30px" }}
         />
         <div
           onClick={() => {

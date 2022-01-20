@@ -32,41 +32,44 @@ function Carousel({ top5 }) {
       ) : (
         <p className="top-text">Top Artists</p>
       )}
-
-      {top5 &&
-        top5.map((element, index) => {
-          return (
-            <div
-              key={index}
-              className={index === current ? "slide active" : "slide"}
-            >
-              {index === current && (
-                <div
-                  style={{
-                    background: ` center / contain no-repeat url(${
-                      top5[0].album
-                        ? element.album.images[1].url
-                        : element.images[1].url
-                    }) `,
-                  }}
-                  className="top-image"
-                  alt="top 50 artist"
-                >
-                  <span className="top-num-display">{index + 1}</span>
-                  <div className="btn-cont">
-                    <button className="scroll left" onClick={prev}>
-                      &lt;
-                    </button>
-                    <button className="scroll right" onClick={next}>
-                      &gt;
-                    </button>
+      <div className="carousel-image-container">
+        {top5 &&
+          top5.map((element, index) => {
+            return (
+              <div
+                key={index}
+                className={index === current ? "slide active" : "slide"}
+              >
+                {index === current && (
+                  <div
+                    style={{
+                      background: ` center / contain no-repeat url(${
+                        top5[0].album
+                          ? element.album.images[1].url
+                          : element.images[1].url
+                      }) `,
+                      position: "relative",
+                      top: "30px",
+                    }}
+                    className="top-image-c"
+                    alt="top 50 artist"
+                  >
+                    <span className="top-num-display-c dark">{index + 1}</span>
+                    <div className="btn-cont">
+                      <button className="scroll left" onClick={prev}>
+                        &lt;
+                      </button>
+                      <button className="scroll right" onClick={next}>
+                        &gt;
+                      </button>
+                    </div>
+                    <p className="top-text-display-c dark">{element.name}</p>
                   </div>
-                  <p className="top-text-display">{element.name}</p>
-                </div>
-              )}
-            </div>
-          );
-        })}
+                )}
+              </div>
+            );
+          })}
+      </div>
 
       <div className="btn-cont-mobile">
         <button className="scroll mobile" onClick={prev}>

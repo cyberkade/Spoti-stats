@@ -91,8 +91,8 @@ function PlayerPage() {
 
   return (
     <div className="container player-wrapper">
-      <div className="toolbar">
-        <div className="breadcrumbs">
+      <div className="toolbar player">
+        <div className="breadcrumbs bc-player">
           <Breadcrumb>
             <Breadcrumb.Item href="/dashboard">
               <HomeOutlined />

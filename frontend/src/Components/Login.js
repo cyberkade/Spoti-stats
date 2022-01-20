@@ -19,7 +19,8 @@ const Login = () => {
         <div className=" container" style={{ margin: "0px 10px" }}>
           <h1 className="title">Spoti-Stats</h1>
           <p className="text">
-            Track your stats, create new playlists, and more!
+            Track your stats <br />
+            Listen to music <span className="italic">with lyrics</span>
           </p>
           <a className="btn btn-success btn-lg" href={AUTH_URL}>
             Login With Spotify!
