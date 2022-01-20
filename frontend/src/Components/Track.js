@@ -20,10 +20,10 @@ function Track({ track }) {
         className="top-image"
         alt="top 50 artist"
       >
-        <span className="top-num-display" onClick={() => handleClick()}>
+        <span className="top-num-display dark" onClick={() => handleClick()}>
           {track.top}
         </span>
-        <p className="top-text-display" onClick={() => handleClick()}>
+        <p className="top-text-display dark" onClick={() => handleClick()}>
           {track.name}
         </p>
       </div>
