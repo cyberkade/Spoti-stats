@@ -14,7 +14,6 @@
 
 div.breadcrumbs {
   width: auto;
-  height: 20%;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -25,6 +24,12 @@ div.breadcrumbs svg {
   position: relative;
   top: -3px;
   margin: 0 8px 0 0;
+}
+
+input.form-control {
+  width: 40%;
+  position: relative;
+  left: -30px;
 }
 
 .feedback {
@@ -40,6 +45,18 @@ div.breadcrumbs svg {
   transition: all 150ms ease-in-out;
   opacity: 0.7;
 }
+
+.shadow {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 150ms ease-in-out;
+}
+
+/* .shadow:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(33, 33, 33, 0.3);
+  transition: all 150ms ease-in-out;
+} */
 
 .toolbar {
   padding: 0 50px;
@@ -67,29 +84,14 @@ div.breadcrumbs svg {
   justify-content: space-between;
   border: 1px solid rgba(128, 128, 128, 0.2);
   box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.3);
-  /* background-origin: center;
-  background-size: contain;
-  background-repeat: no-repeat; */
-}
-
-.shadow {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0);
-  transition: all 150ms ease-in-out;
-}
-
-.shadow:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-  /* background-color: rgba(33, 33, 33, 0.3); */
-  transition: all 150ms ease-in-out;
 }
 
 .top-num-display {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2em;
-  height: 2em;
+  width: 2.4em;
+  height: 2.4em;
   border-radius: 25px;
   border: 1px solid rgba(128, 128, 128, 0.3);
   box-shadow: 0px 0px 5px gray;
@@ -162,6 +164,81 @@ div.breadcrumbs svg {
   .top-image {
     width: 400px;
     height: 400px;
+  }
+
+  .top-num-display {
+    width: 3em;
+    height: 3em;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .top-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .top-num-display {
+    width: 2.4em;
+    height: 2.4em;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .toolbar {
+    padding: 0 1.5em;
+  }
+  span.feedback.wiggle {
+    font-size: 0.9em;
+  }
+  span.bc-active {
+    font-size: 0.9em;
+  }
+  span.bc {
+    font-size: 0.9em;
+  }
+  input.form-control {
+    width: 30%;
+  }
+  /* div.breadcrumbs {
+    font-size: 0.8em;
+  }
+  .toolbar {
+  font-size: 0.8em;
+  } */
+}
+
+@media screen and (max-width: 701px) {
+  .top-image {
+    width: 120px;
+    height: 120px;
+    margin: 15px;
+    font-size: 0.6em;
+  }
+
+  .top-num-display {
+    width: 2.4em;
+    height: 2.4em;
+    /* font-size: 0.8em; */
+  }
+
+  .top-text-display {
+    width: 80%;
+    height: auto;
+    padding: 5px;
+    position: relative;
+    top: 3px;
+    /* border-bottom: none; */
+  }
+  div.ant-breadcrumb {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+  }
+  input.form-control {
+    position: relative;
+    left: 0px;
+    /* left: 30px; */
   }
 }
 

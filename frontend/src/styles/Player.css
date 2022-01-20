@@ -1,3 +1,9 @@
+.lyrics {
+  width: 80vw;
+  text-align: center;
+  overflow: hidden;
+}
+
 .player-wrapper {
   display: flex;
   flex-flow: column;
@@ -6,9 +12,8 @@
   height: 90vh;
 }
 
-.lyrics {
-  width: 70vw;
-  text-align: center;
+.player {
+  margin-top: 10px;
 }
 
 .player-display {
@@ -21,7 +26,57 @@
 }
 
 .search-results {
-  width: 70vw;
+  width: 80vw;
+}
+
+/* Spotify Player classes */
+@media screen and (max-width: 1199px) {
+  div.bc-player {
+    width: 125px;
+  }
+
+  .search-results {
+    width: 70vw;
+  }
+  .lyrics {
+    width: 70vw;
+    text-align: center;
+  }
+
+  /* input.form-control {
+    width: 65% !important;
+  } */
+}
+
+@media screen and (max-width: 992px) {
+  input.form-control {
+    width: 65% !important;
+  }
+  .lyrics {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .search-results {
+    width: 80vw;
+  }
+  .lyrics {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .search-results {
+    height: 50vh;
+    width: 95vw;
+  }
+  .lyrics {
+    font-size: 0.8em;
+    height: 50vh;
+    width: 95vw;
+    /* overflow-y: scroll; */
+  }
 }
 
 /* width */

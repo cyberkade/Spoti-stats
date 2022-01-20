@@ -9,7 +9,7 @@ section.carousel-section {
   height: 91vh;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   /* padding: 25px 0 0 0; */
 }
@@ -28,4 +28,14 @@ div.noStats {
   font-size: 2em;
   text-align: center;
   padding: 1.5em;
+}
+
+@media screen and (max-width: 701px) {
+  section.carousel-section {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 0 0 0;
+  }
 }

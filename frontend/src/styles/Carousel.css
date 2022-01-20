@@ -1,5 +1,5 @@
 .btn-cont {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   background: none;
   display: flex;
@@ -14,11 +14,19 @@
 
 button.view {
   align-self: flex-end;
-  height: auto;
+  height: 50px;
   width: 100%;
   border: none;
   border-top: 1px solid gray;
+  background-color: #1f1e1e;
+  /* box-shadow: inset 0px 0px 40px 40px rgba(128, 128, 128, 0.1); */
   font-size: 1.2em;
+  transition: all 350ms ease-in-out;
+}
+
+button.view:hover {
+  transition: all 350ms ease-in-out;
+  height: 75px;
 }
 
 button.scroll {
@@ -50,14 +58,14 @@ button.scroll:active {
 .carousel-container {
   width: 40vw;
   height: 84vh;
-  margin: 1vw 7vw;
+  /* margin: 1vw 7vw; */
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   border: 2px solid rgba(128, 128, 128, 0.5);
   border-radius: 5px;
-  box-shadow: 1px 0px 10px gray;
+  box-shadow: 0px 0px 10px gray;
 }
 
 .carousel-image {
@@ -89,6 +97,43 @@ button.scroll:active {
   transition-duration: 1s ease-in-out;
   animation: rotateY 300ms ease-in-out forwards;
   transform-origin: center;
+}
+
+.top-image-c {
+  width: 300px;
+  height: 300px;
+  margin: 25px;
+  border-radius: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.3);
+}
+
+.top-num-display-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 25px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  box-shadow: 0px 0px 5px gray;
+}
+
+.top-text-display-c {
+  text-align: center;
+  width: 60%;
+  height: auto;
+  padding: 5px;
+  border-radius: 15px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  box-shadow: 0px 0px 5px gray;
+  z-index: 1;
+  position: relative;
+  top: 3px;
+  /* border-bottom: none; */
 }
 
 .top-text {
@@ -129,6 +174,16 @@ button.scroll:active {
   button.scroll:hover {
     transform: scale(1);
   }
+
+  .top-image-c {
+    width: 400px;
+    height: 400px;
+  }
+
+  .top-num-display-c {
+    width: 3em;
+    height: 3em;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -138,9 +193,6 @@ button.scroll:active {
 
   .btn-cont {
     display: none;
-    justify-content: space-between;
-    position: relative;
-    left: -66px;
   }
 
   button.scroll {
@@ -158,15 +210,23 @@ button.scroll:active {
   .carousel-container {
     width: 40vw;
     height: 87vh;
-    margin: 1vw 7vw;
+    /* margin: 1vw 4vw; */
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: space-between;
     align-content: center;
     align-items: center;
     border: 2px solid gray;
     border-radius: 5px;
     box-shadow: 1px 0px 10px gray;
+  }
+
+  .carousel-image-container {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
   }
 
   .slide {
@@ -181,6 +241,77 @@ button.scroll:active {
     transform-origin: center;
   }
 
+  .top-image-c {
+    width: 260px;
+    height: 260px;
+  }
+
+  .top-num-display-c {
+    width: 2.4em;
+    height: 2.4em;
+  }
+
+  .top-text-display-c {
+    width: 70%;
+  }
+
   .top-text {
+    position: relative;
+    align-self: center;
+    font-size: 1.5em;
+    margin: 1.5em 0;
+  }
+}
+
+@media screen and (max-width: 701px) {
+  .btn-cont-mobile {
+    display: none;
+  }
+
+  .btn-cont {
+    width: 60%;
+    margin: 0 auto;
+    background: none;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    /* left: -73px; */
+  }
+  button.view {
+    height: 40px;
+    border: none;
+    border-top: 1px solid gray;
+    background-color: #1f1e1e;
+    /* box-shadow: inset 0px 0px 40px 40px rgba(128, 128, 128, 0.1); */
+    font-size: 1em;
+    transition: all 350ms ease-in-out;
+  }
+  button.view:hover {
+    height: 50px;
+  }
+  .carousel-container {
+    width: 84vw;
+    height: 41vh;
+    margin: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-content: center;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px gray;
+  }
+  .top-image-c {
+    width: 200px;
+    height: 200px;
+  }
+  .top-text {
+    position: relative;
+    align-self: center;
+    font-size: 1.2em;
+    margin: 5px 0 0 0;
+  }
+  .top-text-display-c {
+    width: 80%;
   }
 }

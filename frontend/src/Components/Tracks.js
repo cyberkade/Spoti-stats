@@ -78,7 +78,6 @@ const Tracks = () => {
         artistsSearch.length > 0
       );
     });
-    console.log(filteredSearch);
     return filteredSearch;
   };
 
@@ -111,7 +110,6 @@ const Tracks = () => {
           placeholder="Search Top Tracks"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ width: "50%", position: "relative", left: "-30px" }}
         />
         <div
           onClick={() => {

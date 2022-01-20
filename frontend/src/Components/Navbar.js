@@ -39,9 +39,7 @@ const Navbar = ({ accessToken }) => {
                 Music Player
               </Link>
               <div className="userInfo-and-profilePic">
-                <div className="userInfo">
-                  <div className="username"> {user.display_name} </div>
-                </div>
+                <div className="username"> {user.display_name} </div>
                 <div className="profilePic">
                   <Avatar size={50} icon={<UserOutlined />} src={user.url} />
                 </div>
