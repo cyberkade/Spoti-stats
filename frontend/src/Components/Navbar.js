@@ -15,10 +15,17 @@ const Navbar = ({ accessToken }) => {
       axiosWithAuth()
         .get("/me")
         .then((res) => {
-          setUser({
-            display_name: res.data.display_name,
-            url: res.data.images[0].url,
-          });
+          if (res.data.images.length > 0 && res.data.display_name) {
+            setUser({
+              display_name: res.data.display_name,
+              url: res.data.images[0].url,
+            });
+          } else {
+            setUser({
+              display_name: res.data.display_name,
+              url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0mpEAFXv-iIa50q5rA2L6nnHGy_akXDFyQQ&usqp=CAU",
+            });
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -35,11 +42,11 @@ const Navbar = ({ accessToken }) => {
               <div className="logo" onClick={() => navigate("/dashboard")}>
                 Spotistats
               </div>
-              <Link className="player-link" to="/player">
+              <Link className="player-link username" to="/player">
                 Music Player
               </Link>
               <div className="userInfo-and-profilePic">
-                <div className="username"> {user.display_name} </div>
+                <p className="username">{user.display_name}</p>
                 <div className="profilePic">
                   <Avatar size={50} icon={<UserOutlined />} src={user.url} />
                 </div>

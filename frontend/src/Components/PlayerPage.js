@@ -109,6 +109,7 @@ function PlayerPage() {
           placeholder="Search Songs/Artists"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          className="form-control-player"
           style={{ width: "75%" }}
         />
       </div>
@@ -128,7 +129,9 @@ function PlayerPage() {
           </div>
         )}
       </div>
-      <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+      <div className="player-div">
+        <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+      </div>
     </div>
   );
 }

@@ -109,6 +109,7 @@ function Artists() {
           onClick={() => {
             handleSwitch();
           }}
+          className="top-switch"
           style={{ marginRight: "20px" }}
         >
           <span className="feedback wiggle">{statFeedback}</span>

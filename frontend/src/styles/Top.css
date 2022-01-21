@@ -33,10 +33,9 @@ input.form-control {
 }
 
 .feedback {
+  text-align: center;
   font-size: 16px;
-  padding: 0 10px;
-  position: relative;
-  top: 3px;
+  padding: 0 5px;
   transition: all 150ms ease-in-out;
 }
 
@@ -97,6 +96,12 @@ input.form-control {
   box-shadow: 0px 0px 5px gray;
 }
 
+.top-switch {
+  display: flex;
+  align-items: center;
+  margin: 0 20px 0 0;
+}
+
 .top-text-display {
   text-align: center;
   width: 60%;
@@ -113,7 +118,6 @@ input.form-control {
 
 .wiggle {
   display: inline-block;
-  box-shadow: inset -5px 0 5px 0 rgba(0, 0, 0, 0.4);
   backface-visibility: hidden;
   transform: translateZ(0px);
   animation-duration: 6000ms;
@@ -131,31 +135,25 @@ input.form-control {
     transform: rotate(0deg);
   }
   75% {
-    box-shadow: inset -5px 0 5px 0 rgba(0, 0, 0, 0.4);
     transform: rotate(4deg);
   }
 
   80% {
-    box-shadow: inset -11px 0 5px 0 rgba(0, 0, 0, 0.4);
     transform: rotate(-2deg);
   }
 
   85% {
-    box-shadow: inset -5px 0 5px 0 rgba(0, 0, 0, 0.4);
     transform: rotate(4deg);
   }
 
   90% {
-    box-shadow: inset -8px 0 5px 0 rgba(0, 0, 0, 0.4);
     transform: rotate(-2deg);
   }
 
   95% {
-    box-shadow: inset -7px 0 5px 0 rgba(0, 0, 0, 0.4);
     transform: rotate(0deg);
   }
   100% {
-    box-shadow: inset -7px 0 5px 0 rgba(0, 0, 0, 0.4);
     transform: rotate(0deg);
   }
 }
@@ -187,6 +185,7 @@ input.form-control {
 @media screen and (max-width: 900px) {
   .toolbar {
     padding: 0 1.5em;
+    justify-content: space-around;
   }
   span.feedback.wiggle {
     font-size: 0.9em;
@@ -198,7 +197,8 @@ input.form-control {
     font-size: 0.9em;
   }
   input.form-control {
-    width: 30%;
+    margin-left: 5px;
+    /* width: 30%; */
   }
   /* div.breadcrumbs {
     font-size: 0.8em;
@@ -222,6 +222,11 @@ input.form-control {
     /* font-size: 0.8em; */
   }
 
+  .top-switch {
+    display: flex;
+    align-items: center;
+  }
+
   .top-text-display {
     width: 80%;
     height: auto;
@@ -234,11 +239,49 @@ input.form-control {
     display: flex;
     flex-flow: column;
     text-align: center;
+    /* font-size: 0.8em; */
   }
   input.form-control {
     position: relative;
     left: 0px;
-    /* left: 30px; */
+  }
+
+  /* a.player-link {
+    margin: 0 15px 0 0;
+  } */
+}
+
+@media screen and (max-width: 450px) {
+  span.feedback.wiggle {
+    font-size: 11.2px;
+  }
+  span.bc-active {
+    font-size: 0.8em;
+  }
+  span.bc {
+    font-size: 0.8em;
+  }
+  div.breadcrumbs svg {
+    width: 12px;
+    height: 12px;
+    margin: 0 0 0 0;
+  }
+  .toolbar {
+    /* font-size: 0.7em; */
+    padding: 0 0.5em;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 375px) {
+  span.anticon-home svg {
+    display: none;
+  }
+  span.anticon-user svg {
+    display: none;
+  }
+  .toolbar {
+    padding: 0 0.5em;
+    justify-content: space-between;
   }
 }
 

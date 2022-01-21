@@ -23,8 +23,8 @@ body {
   width: 200px;
   text-align: center;
   justify-self: center;
-  position: relative;
-  /* left: 20px; */
+  /* position: relative;
+  left: -10px; */
 }
 
 .player-link:hover {
@@ -51,10 +51,13 @@ body {
 }
 
 .username {
-  background-color: #1f1e1e;
   display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
   height: 100%;
   align-items: center;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .userRole {
@@ -76,33 +79,41 @@ header {
   box-shadow: 0px -1px 10px #444343;
 }
 
-@media screen and (min-width: 1500px) {
-  .player-link {
-    color: #f7f7f7;
-    transition: all 200ms ease-in-out;
-    /* position: relative;
-    left: 30px; */
-  }
-  .userInfo-and-profilePic {
-    /* width: auto; */
-  }
-}
-
 @media screen and (max-width: 900px) {
-  header.ant-layout-header.header {
+  /* header.ant-layout-header.header {
     padding: 0 1.5em;
-  }
-  div.navWrapper {
+  } */
+  /* div.navWrapper {
     font-size: 0.9em;
-  }
+  } */
   .profilePic {
     transform: scale(0.8);
     background-color: #1f1e1e;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
+  header.ant-layout-header.header {
+    padding: 0 1.5em;
+  }
   div.navWrapper {
     font-size: 0.8em;
+    justify-content: space-around;
+  }
+  .logo {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  header.ant-layout-header.header {
+    padding: 0 1em;
+  }
+  div.navWrapper {
+    font-size: 0.7em;
+    justify-content: space-around;
+  }
+  .logo {
+    font-size: 24px;
   }
 }

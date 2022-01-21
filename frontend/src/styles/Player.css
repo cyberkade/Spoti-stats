@@ -1,7 +1,9 @@
 .lyrics {
+  height: 100%;
   width: 80vw;
+  line-height: 1.5;
   text-align: center;
-  overflow: hidden;
+  /* overflow-y: scroll; */
 }
 
 .player-wrapper {
@@ -19,6 +21,10 @@
 .player-display {
   margin: 10px;
   overflow-y: scroll;
+}
+
+.player-div {
+  width: 100%;
 }
 
 .search-result {
@@ -49,7 +55,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  input.form-control {
+  input.form-control-player {
     width: 65% !important;
   }
   .lyrics {
@@ -68,14 +74,23 @@
 
 @media screen and (max-width: 575px) {
   .search-results {
-    height: 50vh;
     width: 95vw;
   }
   .lyrics {
     font-size: 0.8em;
     height: 50vh;
     width: 95vw;
-    /* overflow-y: scroll; */
+    line-height: 1.5;
+    /* overflow-x: hidden; */
+  }
+  .player-display {
+    /* overflow-x: hidden; */
+  }
+}
+
+@media screen and (max-width: 413px) {
+  .lyrics {
+    font-size: 0.6em;
   }
 }
 
