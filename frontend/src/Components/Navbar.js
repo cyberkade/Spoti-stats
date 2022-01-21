@@ -6,7 +6,7 @@ import axiosWithAuth from "../Utils/axiosWithAuth";
 
 const { Header } = Layout;
 
-const Navbar = ({ accessToken }) => {
+const Navbar = ({ accessToken, focus, logout }) => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
 
@@ -33,23 +33,33 @@ const Navbar = ({ accessToken }) => {
     }
     // eslint-disable-next-line
   }, [accessToken]);
+
   return (
     <>
       {user && (
         <Layout className="layout">
           <Header className="header">
-            <div className="navWrapper">
+            <div className="nav-wrapper">
               <div className="logo" onClick={() => navigate("/dashboard")}>
                 Spotistats
               </div>
-              <Link className="player-link username" to="/player">
-                Music Player
-              </Link>
-              <div className="userInfo-and-profilePic">
+              {focus === "dash" ? (
+                <Link className="player-link" to="/player">
+                  Music Player
+                </Link>
+              ) : (
+                <Link className="player-link" to="/dashboard">
+                  Dashboard
+                </Link>
+              )}
+              <div className="user-info">
                 <p className="username">{user.display_name}</p>
-                <div className="profilePic">
+                <div className="profile-pic">
                   <Avatar size={50} icon={<UserOutlined />} src={user.url} />
                 </div>
+                <button onClick={() => logout()} className="logout">
+                  Logout
+                </button>
               </div>
             </div>
           </Header>

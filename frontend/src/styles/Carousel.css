@@ -27,6 +27,7 @@ button.view {
 button.view:hover {
   transition: all 350ms ease-in-out;
   height: 75px;
+  opacity: 0.5;
 }
 
 button.scroll {

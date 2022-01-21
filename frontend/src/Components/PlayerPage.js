@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
   server = "http://localhost:3001/";
 }
 
-function PlayerPage() {
+function PlayerPage({ setFocus }) {
   const { topTracks, setTopTracks } = useContext(TopTracksContext);
   const accessToken = localStorage.getItem("access_token");
   const [search, setSearch] = useState("");
@@ -53,6 +53,7 @@ function PlayerPage() {
 
   useEffect(() => {
     setTopTracks(topTracks);
+    setFocus("player");
     //eslint-disable-next-line
   }, []);
   useEffect(() => {

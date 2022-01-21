@@ -4,15 +4,15 @@ import { TopTracksContext } from "../Contexts/TopTracksContext";
 
 import Carousel from "./Carousel";
 
-const Dashboard = () => {
+const Dashboard = ({ setFocus }) => {
   const { topArtists } = useContext(TopArtistsContext);
   const { topTracks } = useContext(TopTracksContext);
   // eslint-disable-next-line
   // const [isLoggedIn, setLoggedIn] = useState();
 
-  // useEffect(() => {
-  //   setLoggedIn(true);
-  // }, []);
+  useEffect(() => {
+    setFocus("dash");
+  }, []);
 
   return (
     <>

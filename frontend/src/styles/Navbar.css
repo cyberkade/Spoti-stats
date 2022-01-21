@@ -7,9 +7,37 @@ body {
   font-size: 2em;
   cursor: pointer;
   width: 200px;
+  transition: all 200ms ease-in-out;
 }
 
-.navWrapper {
+.logo:hover {
+  transition: all 200ms ease-in-out;
+  opacity: 0.7;
+}
+
+.logout {
+  animation: rotateMenu 400ms ease-in-out forwards;
+  transform-origin: top center;
+  cursor: pointer;
+  display: none;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 65px;
+  background-color: rgba(31, 30, 30, 0);
+  height: 64px;
+  width: 8em;
+  z-index: 1;
+  transition: all 200ms ease-in-out;
+}
+
+.logout:hover {
+  transition: all 200ms ease-in-out;
+  color: #f7f7f7;
+  opacity: 0.7;
+}
+
+.nav-wrapper {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -23,6 +51,13 @@ body {
   width: 200px;
   text-align: center;
   justify-self: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  line-height: 1.5;
   /* position: relative;
   left: -10px; */
 }
@@ -33,21 +68,42 @@ body {
   opacity: 0.7;
 }
 
-.userInfo-and-profilePic {
-  display: flex;
-  justify-content: space-between;
-  width: 200px;
-  height: 100%;
-  background-color: #1f1e1e;
+.profile-pic {
+  cursor: default;
+  position: relative;
+  /* padding: 0 20px 0 0; */
 }
 
-.userInfo {
+.profile-pic:hover .logout {
+  display: inline-block;
+}
+
+.user-info {
+  cursor: default;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0.5vw;
-  color: white;
-  background-color: #1f1e1e;
+  align-content: flex-start;
+  justify-content: space-around;
+  width: 200px;
+  height: 100%;
+  /* transition: border 400ms ease-in-out; */
+}
+
+.user-info:hover {
+  height: 200%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: none;
+  z-index: 1;
+  background-color: rgb(31, 30, 30, 0.9);
+  box-shadow: 0px -1px 10px #444343;
+  box-shadow: 0px 8px 16px 0px #444343;
+}
+
+.user-info:hover .logout {
+  display: inline-block;
+}
+
+.user-info:hover .username {
+  height: 50%;
 }
 
 .username {
@@ -59,44 +115,51 @@ body {
   text-align: center;
   line-height: 1.5;
 }
-
-.userRole {
-  display: flex;
-  height: 1vh;
-  align-items: center;
-  justify-content: center;
-  font-style: italic;
-  font-size: 0.7rem;
-}
-
-.profilePic {
-  background-color: #1f1e1e;
-  padding: 0vh 1vw;
-}
-
 header {
   background-color: #1f1e1e !important;
   box-shadow: 0px -1px 10px #444343;
+}
+
+@keyframes rotateMenu {
+  0% {
+    transform: rotateX(-90deg);
+  }
+  70% {
+    transform: rotateX(20deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
 }
 
 @media screen and (max-width: 900px) {
   /* header.ant-layout-header.header {
     padding: 0 1.5em;
   } */
-  /* div.navWrapper {
+  /* div.nav-wrapper {
     font-size: 0.9em;
   } */
-  .profilePic {
+  /* .profile-pic {
     transform: scale(0.8);
-    background-color: #1f1e1e;
-  }
+    position: relative;
+    top: -7px;
+  } */
 }
 
 @media screen and (max-width: 640px) {
+  .profile-pic {
+    transform: scale(0.8);
+    /* position: relative;
+    top: -7px; */
+  }
+  .user-info:hover .profile-pic {
+    position: relative;
+    top: -6px;
+  }
   header.ant-layout-header.header {
     padding: 0 1.5em;
   }
-  div.navWrapper {
+  div.nav-wrapper {
     font-size: 0.8em;
     justify-content: space-around;
   }
@@ -109,11 +172,17 @@ header {
   header.ant-layout-header.header {
     padding: 0 1em;
   }
-  div.navWrapper {
+  div.nav-wrapper {
     font-size: 0.7em;
     justify-content: space-around;
   }
   .logo {
     font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .logo {
+    font-size: 20px;
   }
 }

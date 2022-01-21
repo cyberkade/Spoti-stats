@@ -23,7 +23,6 @@ const useAuth = (code) => {
           code,
         })
         .then((res) => {
-          console.log(res);
           localStorage.setItem("access_token", res.data.access_token);
           setAccessToken(res.data.access_token);
           setRefreshToken(res.data.refresh_token);
