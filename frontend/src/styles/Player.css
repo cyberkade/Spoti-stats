@@ -3,7 +3,6 @@
   width: 80vw;
   line-height: 1.5;
   text-align: center;
-  /* overflow-y: scroll; */
 }
 
 .player-wrapper {
@@ -35,12 +34,10 @@
   width: 80vw;
 }
 
-/* Spotify Player classes */
 @media screen and (max-width: 1199px) {
   div.bc-player {
     width: 125px;
   }
-
   .search-results {
     width: 70vw;
   }
@@ -48,10 +45,6 @@
     width: 70vw;
     text-align: center;
   }
-
-  /* input.form-control {
-    width: 65% !important;
-  } */
 }
 
 @media screen and (max-width: 992px) {
@@ -81,10 +74,6 @@
     height: 50vh;
     width: 95vw;
     line-height: 1.5;
-    /* overflow-x: hidden; */
-  }
-  .player-display {
-    /* overflow-x: hidden; */
   }
 }
 

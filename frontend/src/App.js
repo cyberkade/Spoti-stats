@@ -6,7 +6,6 @@ import { TopTracksContext } from "./Contexts/TopTracksContext";
 import Logout from "./Components/Logout";
 import Login from "./Components/Login";
 import Landing from "./Components/Landing";
-import Loading from "./Common/Loading";
 import Artists from "./Components/Artists";
 import Tracks from "./Components/Tracks";
 import Navbar from "./Components/Navbar";
@@ -14,8 +13,9 @@ import PlayerPage from "./Components/PlayerPage";
 
 import { Routes, Route, Navigate, Outlet, useNavigate } from "react-router-dom";
 const App = () => {
-  const [focus, setFocus] = useState("dash");
+  //eslint-disable-next-line
   const [isLoggedIn, setLoggedIn] = useState();
+  const [focus, setFocus] = useState("dash");
   const [topArtists, setTopArtists] = useState();
   const [topTracks, setTopTracks] = useState();
   const navigate = useNavigate();
@@ -41,7 +41,6 @@ const App = () => {
                 path="/logout"
                 element={<Logout setLoggedIn={setLoggedIn} />}
               />
-              <Route path="/loading" element={<Loading />} />
               <Route
                 path="/dashboard"
                 element={<Landing setFocus={setFocus} />}

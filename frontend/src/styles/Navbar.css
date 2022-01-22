@@ -1,7 +1,3 @@
-body {
-  background-color: #151515;
-}
-
 .logo {
   background-color: #1f1e1e;
   font-size: 2em;
@@ -50,16 +46,11 @@ body {
   transition: all 200ms ease-in-out;
   width: 200px;
   text-align: center;
-  justify-self: center;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   height: 100%;
   align-items: center;
-  text-align: center;
-  line-height: 1.5;
-  /* position: relative;
-  left: -10px; */
 }
 
 .player-link:hover {
@@ -71,7 +62,6 @@ body {
 .profile-pic {
   cursor: default;
   position: relative;
-  /* padding: 0 20px 0 0; */
 }
 
 .profile-pic:hover .logout {
@@ -85,7 +75,6 @@ body {
   justify-content: space-around;
   width: 200px;
   height: 100%;
-  /* transition: border 400ms ease-in-out; */
 }
 
 .user-info:hover {
@@ -130,20 +119,6 @@ header {
   100% {
     transform: rotateX(0deg);
   }
-}
-
-@media screen and (max-width: 900px) {
-  /* header.ant-layout-header.header {
-    padding: 0 1.5em;
-  } */
-  /* div.nav-wrapper {
-    font-size: 0.9em;
-  } */
-  /* .profile-pic {
-    transform: scale(0.8);
-    position: relative;
-    top: -7px;
-  } */
 }
 
 @media screen and (max-width: 640px) {

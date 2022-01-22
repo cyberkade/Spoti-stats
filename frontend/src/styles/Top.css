@@ -17,7 +17,6 @@ div.breadcrumbs {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  /* color: #f7f7f7; */
 }
 
 div.breadcrumbs svg {
@@ -51,6 +50,7 @@ input.form-control {
   transition: all 150ms ease-in-out;
 }
 
+/* IN CASE OF FUTURE ADDITIONS TO GET INFORMATION ABOUT ARTISTS/TRACKS */
 /* .shadow:hover {
   background-color: rgba(0, 0, 0, 0.3);
   background-color: rgba(33, 33, 33, 0.3);
@@ -113,7 +113,6 @@ input.form-control {
   z-index: 1;
   position: relative;
   top: 3px;
-  /* border-bottom: none; */
 }
 
 .wiggle {
@@ -198,14 +197,7 @@ input.form-control {
   }
   input.form-control {
     margin-left: 5px;
-    /* width: 30%; */
   }
-  /* div.breadcrumbs {
-    font-size: 0.8em;
-  }
-  .toolbar {
-  font-size: 0.8em;
-  } */
 }
 
 @media screen and (max-width: 701px) {
@@ -219,7 +211,6 @@ input.form-control {
   .top-num-display {
     width: 2.4em;
     height: 2.4em;
-    /* font-size: 0.8em; */
   }
 
   .top-switch {
@@ -233,22 +224,16 @@ input.form-control {
     padding: 5px;
     position: relative;
     top: 3px;
-    /* border-bottom: none; */
   }
   div.ant-breadcrumb {
     display: flex;
     flex-flow: column;
     text-align: center;
-    /* font-size: 0.8em; */
   }
   input.form-control {
     position: relative;
     left: 0px;
   }
-
-  /* a.player-link {
-    margin: 0 15px 0 0;
-  } */
 }
 
 @media screen and (max-width: 450px) {
@@ -267,7 +252,6 @@ input.form-control {
     margin: 0 0 0 0;
   }
   .toolbar {
-    /* font-size: 0.7em; */
     padding: 0 0.5em;
     justify-content: space-between;
   }
