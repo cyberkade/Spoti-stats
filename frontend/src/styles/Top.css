@@ -44,6 +44,10 @@ input.form-control {
   opacity: 0.7;
 }
 
+span.anticon-control svg {
+  cursor: pointer;
+}
+
 .shadow {
   position: absolute;
   background-color: rgba(0, 0, 0, 0);
@@ -257,9 +261,6 @@ input.form-control {
   }
 }
 @media screen and (max-width: 375px) {
-  span.anticon-home svg {
-    display: none;
-  }
   span.anticon-user svg {
     display: none;
   }

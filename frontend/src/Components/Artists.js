@@ -85,7 +85,7 @@ function Artists() {
   };
 
   return (
-    <section className="view-top-container">
+    <>
       <div className="toolbar">
         <div className="breadcrumbs">
           <Breadcrumb>
@@ -132,7 +132,7 @@ function Artists() {
           <Loading />
         )}
       </div>
-    </section>
+    </>
   );
 }
 
