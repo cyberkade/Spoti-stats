@@ -23,3 +23,24 @@
   font-size: 8rem;
   color: #f7f7f7;
 }
+
+@media screen and (max-width: 1000px) {
+  .title {
+    font-size: 6rem;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .title {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 473px) {
+  .title {
+    font-size: 4rem;
+  }
+  .text {
+    font-size: 1.3rem;
+  }
+}
