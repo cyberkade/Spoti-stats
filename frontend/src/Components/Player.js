@@ -18,15 +18,12 @@ const Player = ({ accessToken, trackUri }) => {
       play={play}
       uris={trackUri ? [trackUri] : []}
       styles={{
-        activeColor: "#dca387",
         bgColor: "#151515",
         color: "#fff",
-        // loaderColor: "#fff",
         sliderColor: "#1cb954",
         trackArtistColor: "#666",
         trackNameColor: "#fff",
       }}
-      // styles={{ sliderColor: "#CCCCCC", sliderTrackColor: "#333333" }}
     />
   );
 };

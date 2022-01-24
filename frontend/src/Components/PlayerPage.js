@@ -37,18 +37,18 @@ function PlayerPage({ setFocus }) {
   useEffect(() => {
     if (!playingTrack) {
       return;
-    } else console.log(playingTrack.artists);
-    axios
-      .get(`${server}lyrics`, {
-        params: {
-          track: playingTrack.title,
-          artist: playingTrack.artists,
-        },
-      })
-      .then((res) => {
-        setLyrics(res.data.lyrics);
-      })
-      .catch((err) => console.log(err));
+    } else
+      axios
+        .get(`${server}lyrics`, {
+          params: {
+            track: playingTrack.title,
+            artist: playingTrack.artists,
+          },
+        })
+        .then((res) => {
+          setLyrics(res.data.lyrics);
+        })
+        .catch((err) => console.log(err));
   }, [playingTrack]);
 
   useEffect(() => {
