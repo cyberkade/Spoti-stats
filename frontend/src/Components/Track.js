@@ -2,10 +2,6 @@ import useWindowDimensions from "../Hooks/useWindowDimensions";
 
 function Track({ track }) {
   const { height, width } = useWindowDimensions();
-  const handleClick = () => {
-    console.log(track);
-    console.log(width);
-  };
   return (
     <div>
       <div className="top-image shadow" />
@@ -20,12 +16,8 @@ function Track({ track }) {
         className="top-image"
         alt="top 50 artist"
       >
-        <span className="top-num-display dark" onClick={() => handleClick()}>
-          {track.top}
-        </span>
-        <p className="top-text-display dark" onClick={() => handleClick()}>
-          {track.name}
-        </p>
+        <span className="top-num-display dark">{track.top}</span>
+        <p className="top-text-display dark">{track.name}</p>
       </div>
     </div>
   );

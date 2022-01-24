@@ -29,12 +29,19 @@ const Tracks = () => {
     axiosWithAuth()
       .get("/me/top/tracks?limit=50&offset=0&time_range=long_term")
       .then((res1) => {
-        const top50 = res1.data.items;
+        const top50 = res1.data.items.map((track, index) => {
+          track.top = index + 1;
+          return track;
+        });
         axiosWithAuth()
           .get("/me/top/tracks?limit=50&offset=49&time_range=long_term")
           .then((res) => {
             res.data.items.shift();
-            setTopTracks([...top50, ...res.data.items]);
+            const next49 = res.data.items.map((track, index) => {
+              track.top = index + 51;
+              return track;
+            });
+            setTopTracks([...top50, ...next49]);
             setFetching(false);
             setStatFeedback("All Time");
           })
@@ -46,6 +53,8 @@ const Tracks = () => {
       .catch((err) => {
         console.log(err);
       });
+    console.log(topTracks);
+    // setTopTracks(topTracks.map((track, index) => (track.top = index + 1)));
   };
 
   const getRecentTracks = async () => {
@@ -53,12 +62,19 @@ const Tracks = () => {
     const res1 = await axiosWithAuth().get(
       "/me/top/tracks?limit=50&offset=0&time_range=short_term"
     );
-    const top50 = res1.data.items;
+    const top50 = res1.data.items.map((track, index) => {
+      track.top = index + 1;
+      return track;
+    });
     axiosWithAuth()
       .get("/me/top/tracks?limit=50&offset=49&time_range=short_term")
       .then((res) => {
         res.data.items.shift();
-        setTopTracks([...top50, ...res.data.items]);
+        const next49 = res.data.items.map((track, index) => {
+          track.top = index + 51;
+          return track;
+        });
+        setTopTracks([...top50, ...next49]);
         setFetching(false);
         setStatFeedback("Most Recent");
       })
@@ -132,7 +148,7 @@ const Tracks = () => {
       <div className="top-display">
         {topTracks && topTracks.length > 5 ? (
           getFilteredSearch().map((track, index) => (
-            <Track key={index} track={{ ...track, top: index + 1 }} />
+            <Track key={index} track={track} />
           ))
         ) : (
           <Loading />

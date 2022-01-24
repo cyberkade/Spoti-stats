@@ -259,6 +259,12 @@ span.anticon-control svg {
     padding: 0 0.5em;
     justify-content: space-between;
   }
+  .top-image {
+    width: 110px;
+    height: 110px;
+    margin: 10px 5px;
+    font-size: 0.6em;
+  }
 }
 @media screen and (max-width: 375px) {
   span.anticon-user svg {
@@ -267,6 +273,12 @@ span.anticon-control svg {
   .toolbar {
     padding: 0 0.5em;
     justify-content: space-between;
+  }
+  .top-image {
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    font-size: 0.6em;
   }
 }
 

@@ -4,7 +4,6 @@ import Dashboard from "../Components/Dashboard.js";
 import Loading from "../Common/Loading.js";
 import { TopArtistsContext } from "../Contexts/TopArtistsContext";
 import { TopTracksContext } from "../Contexts/TopTracksContext";
-
 import { useNavigate } from "react-router-dom";
 
 const Landing = ({ setFocus }) => {

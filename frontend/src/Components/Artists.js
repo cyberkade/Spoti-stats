@@ -1,9 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import axiosWithAuth from "../Utils/axiosWithAuth";
 import Artist from "./Artist";
 import Loading from "../Common/Loading";
 import { TopArtistsContext } from "../Contexts/TopArtistsContext";
-
 import { Breadcrumb } from "antd";
 import {
   HomeOutlined,
@@ -29,12 +28,19 @@ function Artists() {
     axiosWithAuth()
       .get("/me/top/artists?limit=50&offset=0&time_range=long_term")
       .then((res1) => {
-        const top50 = res1.data.items;
+        const top50 = res1.data.items.map((artist, index) => {
+          artist.top = index + 1;
+          return artist;
+        });
         axiosWithAuth()
           .get("/me/top/artists?limit=50&offset=49&time_range=long_term")
           .then((res) => {
             res.data.items.shift();
-            setTopArtists([...top50, ...res.data.items]);
+            const next49 = res.data.items.map((artist, index) => {
+              artist.top = index + 51;
+              return artist;
+            });
+            setTopArtists([...top50, ...next49]);
             setFetching(false);
             setStatFeedback("All Time");
           })
@@ -53,12 +59,19 @@ function Artists() {
     const res1 = await axiosWithAuth().get(
       "/me/top/artists?limit=50&offset=0&time_range=short_term"
     );
-    const top50 = res1.data.items;
+    const top50 = res1.data.items.map((track, index) => {
+      track.top = index + 1;
+      return track;
+    });
     axiosWithAuth()
       .get("/me/top/artists?limit=50&offset=49&time_range=short_term")
       .then((res) => {
         res.data.items.shift();
-        setTopArtists([...top50, ...res.data.items]);
+        const next49 = res.data.items.map((artist, index) => {
+          artist.top = index + 51;
+          return artist;
+        });
+        setTopArtists([...top50, ...next49]);
         setFetching(false);
         setStatFeedback("Most Recent");
       })
@@ -126,7 +139,7 @@ function Artists() {
       <div className="top-display">
         {topArtists && topArtists.length > 5 ? (
           getFilteredSearch().map((artist, index) => (
-            <Artist key={index} artist={{ ...artist, top: index + 1 }} />
+            <Artist key={index} artist={artist} />
           ))
         ) : (
           <Loading />

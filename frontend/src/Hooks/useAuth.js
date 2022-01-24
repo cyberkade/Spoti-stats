@@ -17,7 +17,6 @@ const useAuth = (code) => {
 
   useEffect(() => {
     if (code) {
-      console.log(code);
       axios
         .post(`${server}login`, {
           code,
