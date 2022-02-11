@@ -83,8 +83,8 @@
   border-top: none;
   z-index: 1;
   background-color: rgb(31, 30, 30, 0.9);
-  box-shadow: 0px -1px 10px #444343;
-  box-shadow: 0px 8px 16px 0px #444343;
+  box-shadow: 0 -1px 10px #444343;
+  box-shadow: 0 8px 16px 0 #444343;
 }
 
 .user-info:hover .logout {
@@ -106,7 +106,7 @@
 }
 header {
   background-color: #1f1e1e !important;
-  box-shadow: 0px -1px 10px #444343;
+  box-shadow: 0 -1px 10px #444343;
 }
 
 @keyframes rotateMenu {

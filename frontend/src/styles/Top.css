@@ -86,7 +86,7 @@ span.anticon-control svg {
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid rgba(128, 128, 128, 0.2);
-  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.3);
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.3);
 }
 
 .top-num-display {
@@ -97,7 +97,7 @@ span.anticon-control svg {
   height: 2.4em;
   border-radius: 25px;
   border: 1px solid rgba(128, 128, 128, 0.3);
-  box-shadow: 0px 0px 5px gray;
+  box-shadow: 0 0 5px gray;
 }
 
 .top-switch {
@@ -113,7 +113,7 @@ span.anticon-control svg {
   padding: 5px;
   border-radius: 15px;
   border: 1px solid rgba(128, 128, 128, 0.3);
-  box-shadow: 0px 0px 5px gray;
+  box-shadow: 0 0 5px gray;
   z-index: 1;
   position: relative;
   top: 3px;
@@ -236,7 +236,7 @@ span.anticon-control svg {
   }
   input.form-control {
     position: relative;
-    left: 0px;
+    left: 0;
   }
 }
 
