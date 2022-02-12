@@ -24,26 +24,26 @@ const Tracks = () => {
     //eslint-disable-next-line
   }, []);
 
-  const getAllTimeTracks = async () => {
+  const getStats = (range, feedback) => {
     setFetching(true);
     axiosWithAuth()
-      .get("/me/top/tracks?limit=50&offset=0&time_range=long_term")
+      .get(`/me/top/tracks?limit=50&offset=0&time_range=${range}`)
       .then((res1) => {
-        const top50 = res1.data.items.map((track, index) => {
-          track.top = index + 1;
-          return track;
+        const top50 = res1.data.items.map((artist, index) => {
+          artist.top = index + 1;
+          return artist;
         });
         axiosWithAuth()
-          .get("/me/top/tracks?limit=50&offset=49&time_range=long_term")
+          .get(`/me/top/tracks?limit=50&offset=49&time_range=${range}`)
           .then((res) => {
             res.data.items.shift();
-            const next49 = res.data.items.map((track, index) => {
-              track.top = index + 51;
-              return track;
+            const next49 = res.data.items.map((artist, index) => {
+              artist.top = index + 51;
+              return artist;
             });
             setTopTracks([...top50, ...next49]);
             setFetching(false);
-            setStatFeedback("All Time");
+            setStatFeedback(feedback);
           })
           .catch((err) => {
             setFetching(false);
@@ -53,35 +53,14 @@ const Tracks = () => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(topTracks);
-    // setTopTracks(topTracks.map((track, index) => (track.top = index + 1)));
+  };
+
+  const getAllTimeTracks = async () => {
+    getStats("long_term", "All Time");
   };
 
   const getRecentTracks = async () => {
-    setFetching(true);
-    const res1 = await axiosWithAuth().get(
-      "/me/top/tracks?limit=50&offset=0&time_range=short_term"
-    );
-    const top50 = res1.data.items.map((track, index) => {
-      track.top = index + 1;
-      return track;
-    });
-    axiosWithAuth()
-      .get("/me/top/tracks?limit=50&offset=49&time_range=short_term")
-      .then((res) => {
-        res.data.items.shift();
-        const next49 = res.data.items.map((track, index) => {
-          track.top = index + 51;
-          return track;
-        });
-        setTopTracks([...top50, ...next49]);
-        setFetching(false);
-        setStatFeedback("Most Recent");
-      })
-      .catch((err) => {
-        setFetching(false);
-        console.log(err);
-      });
+    getStats("short_term", "Recent");
   };
 
   const getFilteredSearch = () => {
@@ -101,7 +80,7 @@ const Tracks = () => {
     if (statFeedback === "All Time") {
       getRecentTracks();
     }
-    if (statFeedback === "Most Recent") {
+    if (statFeedback === "Recent") {
       getAllTimeTracks();
     }
   };
@@ -132,7 +111,6 @@ const Tracks = () => {
             handleSwitch();
           }}
           className="top-switch"
-          style={{ marginRight: "20px" }}
         >
           <span className="feedback wiggle">{statFeedback}</span>
           {!isFetching && (
