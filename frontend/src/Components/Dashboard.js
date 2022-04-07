@@ -10,7 +10,7 @@ const Dashboard = ({ setFocus }) => {
   useEffect(() => {
     setFocus("dash");
   }, []);
-
+  console.log(topArtists);
   return (
     <>
       <section className="carousel-section">
